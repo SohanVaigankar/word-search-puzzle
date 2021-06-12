@@ -1,3 +1,3 @@
 import { keywords } from "./keywordList.js";
 
-console.log(keywords[0].list);
+console.log(keywords);
