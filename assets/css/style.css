@@ -48,8 +48,30 @@ body {
   background-color: yellow;
 }
 
-.puzzle-grid {
-  background-color: grey;
-  height: 70rem;
-  width: 70rem;
+.puzzle-grid{
+    background-color:grey;
+    height: 70rem;
+    width: 70rem;
+}
+
+.grid{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #BBADA0;
+    border: 5px solid #BBADA0;
+}
+
+.grid div{
+    font-family: Roboto;
+    box-sizing: border-box;
+    min-width: 39px;
+    height: 39px;
+    background-color: #CCC0B3;
+    border: 3px solid #BBADA0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
 }
