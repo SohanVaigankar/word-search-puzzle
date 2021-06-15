@@ -79,20 +79,34 @@
         style="width: 0%"
       ></div>
     </div>
-    <div class="container mt-3">
-      <div class="row gap-3 mt-5 p-1">
-        <div class="puzzle-playground-block col-8">
-          <div class="level-info-block row">
-            <h2 class="level-status">level x</h2>
-            <span class="info-button">(i)</span>
+    <div class="container mt-5 mb-2 pb-5">
+      <div class="row gap-3 mt-3 p-1 justify-content-center">
+        <div class="puzzle-playground-block col-7">
+          <div
+            class="
+              level-info-block
+              row
+              justify-content-center
+              align-items-center
+            "
+          >
+            <h2 class="level-status display-4">
+              Level X
+              <span class="info-button display-6">(i)</span>
+            </h2>
           </div>
-
-          <div class="puzzle-grid row">
-            <div class="grid"></div>
+          <div class="row justify-content-center">
+            <div
+              class="puzzle-grid row justify-content-center align-items-center"
+            >
+              <div
+                class="grid p-1 m- justify-content-center align-items-center"
+              ></div>
+            </div>
           </div>
 
           <div class="puzzle-controllers row">
-            <button class="restart col">Restart</button>
+            <button type="button" class="btn btn-primary restart col-2">Restart</button>
             <div class="level-progress-bar col">------progress bar-------</div>
           </div>
         </div>
@@ -103,7 +117,11 @@
           </div>
           <div class="row mt-5 justify-content-center">
             <div class="puzzle-info-block p-3 col-5 display-3">
-              <p class="info-title display-3 pt-3 pb-3">Word List</p>
+              <p
+                class="info-title display-3 pt-3 pb-3 text-decoration-underline"
+              >
+                Word List
+              </p>
               <p class="word p-1">One</p>
               <p class="word p-1">Two</p>
               <p class="word p-1">Three</p>
