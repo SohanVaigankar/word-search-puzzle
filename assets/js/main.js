@@ -20,4 +20,18 @@ var timeLimit = 60;
 progressBarFun(current_progress, timeLimit);
 
 
-// TODO: 
+// TODO: Grid implementation
+window.addEventListener('DOMContentLoaded', (event) => {
+    const mainGrid = document.querySelector('.grid');
+    const width = 13;
+    let gridSlots = [];
+
+    (function createGrid() {
+        for (let i = 0; i < 169; i++) {
+            const gridSlot = document.createElement("div");
+            gridSlot.innerHTML = String.fromCharCode(97+Math.floor(Math.random() * 26));
+            mainGrid.appendChild(gridSlot);
+            gridSlots.push(gridSlot);
+        }
+    })();
+});

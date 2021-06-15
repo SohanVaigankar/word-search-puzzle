@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  width: 100vw;
+  font-size: 1.5rem;
+}
+
+.container {
+  max-width: 90%;
+  background-color: whitesmoke;
+  display: grid;
+}
+
+.puzzle-playground-block {
+  background-color: red;
+}
+
+.puzzle-info-block {
+  background-color: green;
+  height: 10rem;
+}
+
+.scores {
+  height: 10rem;
+  background-color: blue;
+}
+
+.level-info-block {
+  height: 5rem;
+  background-color: yellow;
+}
+
+.puzzle-grid{
+    background-color:grey;
+    height: 70rem;
+    width: 70rem;
+}
+
+.grid{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #BBADA0;
+    border: 5px solid #BBADA0;
+}
+
+.grid div{
+    font-family: Roboto;
+    box-sizing: border-box;
+    min-width: 39px;
+    height: 39px;
+    background-color: #CCC0B3;
+    border: 3px solid #BBADA0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
