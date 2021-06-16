@@ -40,7 +40,6 @@ body {
 .puzzle-controllers {
   margin: 0 auto;
   width: 100%;
-  /* background-color: violet; */
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -66,7 +65,6 @@ body {
 }
 
 .puzzle-grid {
-  /* background-color: grey; */
   height: 68rem;
   width: 68rem;
 }
