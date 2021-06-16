@@ -78,13 +78,13 @@ keywords.forEach((object) => {
 });
 
 var i;
-if (level.level_count === 2) {
-  puzzleInfoBlock.innerHTML = `<p class="info-title display-3 pt-3 pb-3 text-decoration-underline">${info_title}</p>`;
+
+  puzzleInfoBlock.innerHTML = `<p class="info-title px-5 mx-4 display-3 pt-3 pb-3 text-decoration-underline">${info_title}</p>`;
   for (i = 0; i < level.no_of_words; i++) {
-    puzzleInfoBlock.innerHTML += `<p class="word p-1 text-start">${
+    puzzleInfoBlock.innerHTML += `<p class="word p-1 px-5 mx-4 text-start">${
       i + 1 + ` . ` + wordList[Math.floor(Math.random() * wordList.length) + 1]
     }</p>`;
   }
-}
+
 
 console.log(wordList);
