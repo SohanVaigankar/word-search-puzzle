@@ -2,15 +2,15 @@ import { keywords } from "./keywordList.js";
 
 const progressBar = document.querySelector(".progress-bar");
 const puzzleInfoBlock = document.querySelector(".puzzle-info-block");
+const restartButton = document.querySelector(".restart");
 
 console.log(keywords.length);
 
 // To generate & store random words from 'keywordList.js'
-// const wordList = [];
 
 // Progress bar
 function progressBarFun(current_progress, timeLimit) {
-  var interval = setInterval(function () {
+  let interval = setInterval(function () {
     current_progress += 1 / timeLimit;
     // console.log(current_progress);
     progressBar.setAttribute("style", `width:${current_progress}%`);
@@ -19,72 +19,89 @@ function progressBarFun(current_progress, timeLimit) {
   }, 10);
 }
 
-var current_progress = 0;
-var timeLimit = 60;
-progressBarFun(current_progress, timeLimit);
+let current_progress = 0;
+let timeLimit = 60;
 
 // Grid implementation
-window.addEventListener("DOMContentLoaded", (event) => {
-  const mainGrid = document.querySelector(".grid");
-  const width = 13;
-  let gridSlots = [];
+const mainGrid = document.querySelector(".grid");
+let gridSize = 13;
+let row = 0;
+let col = 0;
 
-  (function createGrid() {
-    for (let i = 0; i < 169; i++) {
-      const gridSlot = document.createElement("div");
-      gridSlot.innerHTML = String.fromCharCode(
+function createGrid() {
+  mainGrid.innerHTML = "";
+  for (row = 0; row < gridSize; row++) {
+    for (col = 0; col < gridSize; col++) {
+      mainGrid.innerHTML += `<div>${String.fromCharCode(
         97 + Math.floor(Math.random() * 26)
-      );
-      mainGrid.appendChild(gridSlot);
-      gridSlots.push(gridSlot);
+      )}</div>`;
     }
-  })();
+  }
+}
+
+// This block runs initially when the webpage is loaded
+window.addEventListener("DOMContentLoaded", (event) => {
+  createGrid();
+  progressBarFun(current_progress, timeLimit);
+  generateWordList();
 });
 
 // Code to change word list according to the current level
 
-const level = { level_count: 2, no_of_words: 7 };
+// Updates Level status
+const level = { level_count: 3, no_of_words: 7 };
 
-// function generateWordList(level) {
-// level = 1
+document.querySelector(
+  ".level-status"
+).textContent = `Level ${level.level_count}`;
 
-// }
-let info_title = "";
-let wordList = [];
-keywords.forEach((object) => {
-  switch (level.level_count) {
-    case 1:
-      info_title = "Word List";
-      if (object.one_liner === "" && object.story === "") {
-        wordList.push(object.word);
-      }
-      break;
-    case 2:
-      info_title = "Stories";
-      if (object.story !== "") {
-        wordList.push(object.word);
-      }
-      break;
-    case 3:
-      info_title = "One Liners";
-      if (object.one_liner !== "") {
-        wordList.push(object.word);
-      }
-      break;
-    default:
-      console.error("Keyword generation failed");
-      break;
-  }
-});
+// Creates a list of kwywords based of the level specified
+function generateWordList() {
+  let info_title = "";
+  let wordList = [];
+  keywords.forEach((object) => {
+    switch (level.level_count) {
+      case 1:
+        // For level 1: easy
+        info_title = "Word List";
+        if (object.one_liner === "" && object.story === "") {
+          wordList.push(object.word);
+        }
+        break;
+      case 2:
+        // For level 2 : medium
+        info_title = "Stories";
+        if (object.story !== "") {
+          wordList.push(object.word);
+        }
+        break;
+      case 3:
+        // For level 3: hard
+        info_title = "One Liners";
+        if (object.one_liner !== "") {
+          wordList.push(object.word);
+        }
+        break;
+      default:
+        console.error("Invalid Level! Keyword generation failed");
+        break;
+    }
+  });
 
-var i;
-
+  // Inserts word list into the HTML
   puzzleInfoBlock.innerHTML = `<p class="info-title px-5 mx-4 display-3 pt-3 pb-3 text-decoration-underline">${info_title}</p>`;
-  for (i = 0; i < level.no_of_words; i++) {
+  for (let i = 0; i < level.no_of_words; i++) {
     puzzleInfoBlock.innerHTML += `<p class="word p-1 px-5 mx-4 text-start">${
-      i + 1 + ` . ` + wordList[Math.floor(Math.random() * wordList.length) + 1]
+      i + 1 + ` . ` + wordList[Math.floor(Math.random() * wordList.length)]
     }</p>`;
   }
 
+  console.log(wordList);
+}
 
-console.log(wordList);
+// Restarts the puzzle at current level
+restartButton.addEventListener("click", (event) => {
+  createGrid();
+  generateWordList();
+  progressBarFun(0, timeLimit);
+});
