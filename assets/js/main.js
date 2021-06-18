@@ -3,6 +3,7 @@ import { keywords } from "./keywordList.js";
 const progressBar = document.querySelector(".progress-bar");
 const puzzleInfoBlock = document.querySelector(".puzzle-info-block");
 const restartButton = document.querySelector(".restart");
+const instructionButton = document.querySelector(".instructions");
 
 let interval = 0;
 console.log(keywords.length);
@@ -66,11 +67,18 @@ document.querySelector(
 function generateWordList() {
   let info_title = "";
   let wordList = [];
+  let instructionList = [];
   keywords.forEach((object) => {
     switch (level.level_count) {
       case 1:
         // For level 1: easy
         info_title = "Word List";
+        instructionList = [
+          "Instruction 1",
+          "Instruction 2",
+          "Instruction 3",
+          "Instruction 4",
+        ];
         if (object.one_liner === "" && object.story === "") {
           wordList.push(object.word);
         }
@@ -78,6 +86,12 @@ function generateWordList() {
       case 2:
         // For level 2 : medium
         info_title = "Stories";
+        instructionList = [
+          "Instruction 1",
+          "Instruction 2",
+          "Instruction 3",
+          "Instruction 4",
+        ];
         if (object.story !== "") {
           wordList.push(object.word);
         }
@@ -85,6 +99,12 @@ function generateWordList() {
       case 3:
         // For level 3: hard
         info_title = "One Liners";
+        instructionList = [
+          "Instruction 1",
+          "Instruction 2",
+          "Instruction 3",
+          "Instruction 4",
+        ];
         if (object.one_liner !== "") {
           wordList.push(object.word);
         }
@@ -97,12 +117,26 @@ function generateWordList() {
 
   // Inserts word list into the HTML
   puzzleInfoBlock.innerHTML = `<p class="info-title px-5 mx-4 display-3 pt-3 pb-3 text-decoration-underline">${info_title}</p>`;
+  document.querySelector(
+    ".offcanvas-body"
+  ).innerHTML = `<ol class="instructions-ol  align-items-start" mx-2 p-4> </ol>`;
+  document.querySelector(".offcanvas-body ol").innerHTML = "";
   for (let i = 0; i < level.no_of_words; i++) {
     puzzleInfoBlock.innerHTML += `<p class="word p-1 px-5 mx-4 text-start">${
       i + 1 + ` . ` + wordList[Math.floor(Math.random() * wordList.length)]
     }</p>`;
   }
 
+  let count = 0;
+  instructionList.forEach((instruction) => {
+    document.querySelector(
+      ".instructions-ol"
+    ).innerHTML += ` <list mx-2 p-4 text-center>${
+      ++count + ". " + instruction
+    }</list>`;
+  });
+
+  console.log(instructionList);
   console.log(wordList);
 }
 
@@ -120,3 +154,6 @@ restartButton.addEventListener("click", () => {
     progressBarFun();
   }, 1000);
 });
+
+// Instrction Button
+instructionButton.addEventListener("click", (event) => {});

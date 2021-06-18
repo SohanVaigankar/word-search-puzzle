@@ -104,3 +104,29 @@ body {
   font-weight: bold;
   color: rgb(82, 83, 83);
 }
+
+.offcanvas {
+  height: 50%;
+  width: 50%;
+  margin: auto auto;
+}
+
+.offcanvas-header p {
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+
+.instructions-ol {
+  display: flex;
+  flex-direction: column;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
