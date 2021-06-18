@@ -116,15 +116,21 @@ function generateWordList() {
   });
 
   // Inserts word list into the HTML
-  puzzleInfoBlock.innerHTML = `<p class="info-title px-5 mx-4 display-3 pt-3 pb-3 text-decoration-underline">${info_title}</p>`;
+  let randomWordList = [];
+  let wordIndex = Array.from(Array(wordList.length).keys());
+  wordIndex = wordIndex.sort(() => Math.random() - 0.5);
+  console.log(wordIndex);
+  puzzleInfoBlock.innerHTML = `<p class="info-title noselect px-5 mx-4 display-3 pt-3 pb-3 text-decoration-underline">${info_title}</p>`;
   document.querySelector(
     ".offcanvas-body"
   ).innerHTML = `<ol class="instructions-ol  align-items-start" mx-2 p-4> </ol>`;
   document.querySelector(".offcanvas-body ol").innerHTML = "";
   for (let i = 0; i < level.no_of_words; i++) {
-    puzzleInfoBlock.innerHTML += `<p class="word p-1 px-5 mx-4 text-start">${
-      i + 1 + ` . ` + wordList[Math.floor(Math.random() * wordList.length)]
+    var currentWord = wordList[wordIndex[i]];
+    puzzleInfoBlock.innerHTML += `<p class="word noselect p-1 px-5 mx-4 text-start">${
+      i + 1 + ` . ` + currentWord
     }</p>`;
+    randomWordList.push(currentWord);
   }
 
   let count = 0;
@@ -138,6 +144,7 @@ function generateWordList() {
 
   console.log(instructionList);
   console.log(wordList);
+  console.log(randomWordList);
 }
 
 // Restarts the puzzle at current level
