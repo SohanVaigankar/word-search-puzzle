@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 // Code to change word list according to the current level
 
 // Updates Level status
-const level = { level_count: 3, no_of_words: 7 };
+const level = { level_count: 3, no_of_words: 7};
 
 document.querySelector(
   ".level-status"
@@ -96,14 +96,19 @@ function generateWordList() {
   });
 
   // Inserts word list into the HTML
+  let randomWordList = [];
+  let wordIndex = Array.from(Array(wordList.length).keys())
+  wordIndex = wordIndex.sort(() => Math.random() - 0.5)
+  console.log(wordIndex);
   puzzleInfoBlock.innerHTML = `<p class="info-title px-5 mx-4 display-3 pt-3 pb-3 text-decoration-underline">${info_title}</p>`;
   for (let i = 0; i < level.no_of_words; i++) {
+    var currentWord = wordList[wordIndex[i]]
     puzzleInfoBlock.innerHTML += `<p class="word p-1 px-5 mx-4 text-start">${
-      i + 1 + ` . ` + wordList[Math.floor(Math.random() * wordList.length)]
+      i + 1 + ` . ` + currentWord
     }</p>`;
+    randomWordList.push(currentWord);
   }
-
-  console.log(wordList);
+  console.log(randomWordList);
 }
 
 // Restarts the puzzle at current level
