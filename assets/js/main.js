@@ -4,19 +4,26 @@ const progressBar = document.querySelector(".progress-bar");
 const puzzleInfoBlock = document.querySelector(".puzzle-info-block");
 const restartButton = document.querySelector(".restart");
 
+let interval = 0;
 console.log(keywords.length);
 
 // To generate & store random words from 'keywordList.js'
 
 // Progress bar
-function progressBarFun(current_progress, timeLimit) {
-  let interval = setInterval(function () {
+function updateProgressBar() {
+  if (current_progress >= 0 && current_progress <= 100) {
     current_progress += 1 / timeLimit;
     // console.log(current_progress);
     progressBar.setAttribute("style", `width:${current_progress}%`);
     progressBar.setAttribute("aria-valuenow", current_progress);
-    if (current_progress >= 100) clearInterval(interval);
-  }, 10);
+  } else {
+    clearInterval(interval);
+    interval = 0;
+  }
+}
+
+function progressBarFun() {
+  interval = setInterval(updateProgressBar, 10);
 }
 
 let current_progress = 0;
@@ -42,7 +49,7 @@ function createGrid() {
 // This block runs initially when the webpage is loaded
 window.addEventListener("DOMContentLoaded", (event) => {
   createGrid();
-  progressBarFun(current_progress, timeLimit);
+  progressBarFun();
   generateWordList();
 });
 
@@ -100,8 +107,16 @@ function generateWordList() {
 }
 
 // Restarts the puzzle at current level
-restartButton.addEventListener("click", (event) => {
+restartButton.addEventListener("click", () => {
   createGrid();
   generateWordList();
-  progressBarFun(0, timeLimit);
+  clearInterval(interval);
+  interval = 0;
+  current_progress = 0;
+  // updateProgressBar(current_progress);
+  progressBar.setAttribute("style", `width:${current_progress}%`);
+  progressBar.setAttribute("aria-valuenow", current_progress);
+  setTimeout(() => {
+    progressBarFun();
+  }, 1000);
 });
