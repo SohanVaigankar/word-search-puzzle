@@ -2,6 +2,7 @@
   --primary-background-color: #fafafa;
   --secondary-background-color: #f5f5f5;
   --primary-text-color: #252525;
+  --navbar-height: 6rem;
 }
 
 * {
@@ -16,15 +17,24 @@ html {
 }
 
 body {
-  width: 100vw;
+  /* width: 100vw; */
   font-size: 1.5rem;
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
 }
 
 .navbar {
-  height: 6rem;
+  height: var(--navbar-height);
   font-size: 1.8rem;
+}
+
+.progress {
+  top: var(--navbar-height);
+  position: sticky;
+}
+
+.progress-bar {
+  border-radius: 0.5rem;
 }
 
 .container {
@@ -34,7 +44,6 @@ body {
 }
 
 .puzzle-playground-block {
-  text-align: center;
 }
 
 .puzzle-controllers {
@@ -106,12 +115,11 @@ body {
 }
 
 .oneliner:hover {
-  z-index: -19954;
   border-radius: 1rem;
-  opacity: 0.9;
-  background-color: #bbada0;
+  /* opacity: 0.9; */
+  background-color: #bbada0a4;
   cursor: default;
-  font-weight: bold;
+  font-weight: 400;
   color: rgb(82, 83, 83);
 }
 
@@ -155,4 +163,14 @@ body {
 
 .padding-left {
   padding-left: -5rem;
+}
+
+.one-liner-content {
+  margin: auto 2rem;
+  margin-left: -3rem;
+}
+
+.modal-dialog{
+  left: 20%;
+  top: 40%;
 }

@@ -2,7 +2,6 @@ import { keywords } from "./keywordList.js";
 
 const progressBar = document.querySelector(".progress-bar");
 const restartButton = document.querySelector(".restart");
-const instructionButton = document.querySelector(".instructions");
 
 let interval = 0;
 console.log(keywords.length);
@@ -68,7 +67,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 // Code to change word list according to the current level
 
 // Updates Level status
-const level = { level_count: 3, no_of_words: 9 };
+const level = { level_count: 3, no_of_words: 7 };
 
 document.querySelector(
   ".level-status"
@@ -141,8 +140,7 @@ function generateWordList() {
   // Adds required classes to nfo-display-block
   document.querySelector(
     ".info-display-block"
-  ).innerHTML = `<div class="puzzle-info-block ${levelClasses} text-center p-3 display-3">
-                  </div>`;
+  ).innerHTML = `<div class="puzzle-info-block ${levelClasses} text-center p-3 display-3"></div>`;
 
   //Adds content to puzzle-info-block
   const puzzleInfoBlock = document.querySelector(".puzzle-info-block");
@@ -153,43 +151,43 @@ function generateWordList() {
   // Displays stories inside a carousel if level.levelcount=2
   if (level.level_count === 2) {
     puzzleInfoBlock.innerHTML += `<div id="carouselExampleCaptions" class="carousel bg-dark" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="..." class="d-block w-100" alt="...">
+                    <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                    </div>
+                    <div class="carousel-item">
+                    <img src="..." class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
         </div>
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
         </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>`;
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
+        </div>`;
   }
 
   // Adds instructions to the offcanvas
@@ -207,9 +205,16 @@ function generateWordList() {
         }</p>`;
         break;
       case 3:
-        puzzleInfoBlock.innerHTML += `<p class="oneliner noselect p-1 px-5 mx-4 text-start">${
-          i + 1 + ` . ` + keywords.find(({ word }) => word === currentWord).one_liner
-        }</p>`;
+        puzzleInfoBlock.innerHTML += `<div class="oneliner row noselect p-1 px-5 mx-4">
+                <p class=" p-2 col-1 text-start">${i + 1 + ` . `}</p>
+                <p class="col one-liner-content p-2 text-start ">
+                ${keywords.find(({ word }) => word === currentWord).one_liner}
+                </p>
+                <button type="button" class="btn hint-button btn-lg btn-primary col-1 text-center m-auto fs-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+                <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+                </svg> Hint</button>
+                </div>`;
         break;
       default:
         console.error("Invalid Level");
@@ -217,7 +222,15 @@ function generateWordList() {
     randomWordList.push(currentWord);
   }
 
-  console.log();
+  // Hint Button
+  // const hintButton = document.querySelector(".hint-button");
+  // hintButton.addEventListener("click", (event) => {
+    // console.log(event);
+    // document.querySelector(".modal-body").textContent = keywords.find(
+    //   ({ word }) => word === currentWord
+    // ).hint;
+  });
+
   instructionFun(instructionList);
   console.log("WordList:" + wordList);
   console.log("Random Word List:" + randomWordList);
@@ -236,6 +249,3 @@ restartButton.addEventListener("click", () => {
     progressBarFun();
   }, 1000);
 });
-
-// Instrction Button
-instructionButton.addEventListener("click", (event) => {});
