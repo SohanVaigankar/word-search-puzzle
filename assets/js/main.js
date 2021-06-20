@@ -229,7 +229,7 @@ function generateWordList() {
     // document.querySelector(".modal-body").textContent = keywords.find(
     //   ({ word }) => word === currentWord
     // ).hint;
-  });
+  // });
 
   instructionFun(instructionList);
   console.log("WordList:" + wordList);
