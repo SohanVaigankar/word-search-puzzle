@@ -414,3 +414,98 @@ export const keywords = [
     story: "story for word 4",
   },
 ];
+
+export const story = [
+  {
+    part: [
+      {
+        content: `Story 1 part 1 word1 word2 word3 word4`,
+        words: ["word1", "word2", "word3", "word4"],
+      },
+      {
+        content: `Story 1 part 2 word5 word6 word7 word8`,
+        words: ["word5", "word6", "word7", "word8"],
+      },
+      {
+        content: `Story 1 part 3 word9 word10 word11 word12`,
+        words: ["word9", "word10", "word11", "word12"],
+      },
+    ],
+  },
+  {
+    part: [
+      {
+        content: `Story 2 part 1 word1 word2 word3 word4`,
+        words: ["word1", "word2", "word3", "word4"],
+      },
+      {
+        content: `Story 2 part 2 word5 word6 word7 word8`,
+        words: ["word5", "word6", "word7", "word8"],
+      },
+      {
+        content: `Story 2 part 3 word9 word10 word11 word12`,
+        words: ["word9", "word10", "word11", "word12"],
+      },
+      {
+        content: `Story 2 part 4 word13 word14 word15 word16`,
+        words: ["word13", "word14", "word15", "word16"],
+      },
+      {
+        content: `Story 2 part 5 word17 word18 word19 word20`,
+        words: ["word17", "word18", "word19", "word20"],
+      },
+    ],
+  },
+  {
+    part: [
+      {
+        content: `Story 3 part 1 word1 word2 word3 word4`,
+        words: ["word1", "word2", "word3", "word4"],
+      },
+      {
+        content: `Story 3 part 2 word5 word6 word7 word8`,
+        words: ["word5", "word6", "word7", "word8"],
+      },
+      {
+        content: `Story 3 part 3 word9 word10 word11 word12`,
+        words: ["word9", "word10", "word11", "word12"],
+      },
+      {
+        content: `Story 3 part 4 word13 word14 word15 word16`,
+        words: ["word13", "word14", "word15", "word16"],
+      },
+    ],
+  },
+  {
+    part: [
+      {
+        content: `Story 4 part 1 word1 word2 word3 word4`,
+        words: ["word1", "word2", "word3", "word4"],
+      },
+      {
+        content: `Story 4 part 2 word5 word6 word7 word8`,
+        words: ["word5", "word6", "word7", "word8"],
+      },
+      {
+        content: `Story 4 part 3 word9 word10 word11 word12`,
+        words: ["word9", "word10", "word11", "word12"],
+      },
+    ],
+  },
+  {
+    part: [
+      {
+        content: `Story 5 part 1 word1 word2 word3 word4`,
+        words: ["word1", "word2", "word3", "word4"],
+      },
+      {
+        content: `Story 5 part 2 word5 word6 word7 word8`,
+        words: ["word5", "word6", "word7", "word8"],
+      },
+      {
+        content: `Story 5 part 3 word9 word10 word11 word12`,
+        words: ["word9", "word10", "word11", "word12"],
+      },
+    ],
+  },
+];
