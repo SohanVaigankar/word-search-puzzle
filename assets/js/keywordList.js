@@ -1,7 +1,6 @@
 export const keywords = [
   {
     word: "Video",
-    story: "",
     hint: `v _ d _ o`,
     one_liner:
       "A media made out of lots of photos, shown quickly, one after the other. It may contain sound",
@@ -10,7 +9,6 @@ export const keywords = [
   },
   {
     word: "Animation",
-    story: "",
     hint: `a _ _ m a _ i _ n`,
     one_liner:
       "This is a one-liner for video keyword sdjfhskhfksdf dsbnbfjksdh jhfsd jkhfsds fsjhfslkjf fslkjjf fsdklj fsfklskf fsfhsf b",
@@ -19,7 +17,6 @@ export const keywords = [
   },
   {
     word: "Robot",
-    story: "",
     hint: `r _ _ o t`,
     one_liner:
       "This is a one-liner for video keyword sdjfhskhfksdf dsbnbfjksdh jhfsd jkhfsds fsjhfslkjf fslkjjf fsdklj fsfklskf fsfhsf b",
@@ -28,7 +25,6 @@ export const keywords = [
   },
   {
     word: "Game",
-    story: "",
     hint: `g _ _ e`,
     one_liner:
       "This is a one-liner for video keyword sdjfhskhfksdf dsbnbfjksdh jhfsd jkhfsds fsjhfslkjf fslkjjf fsdklj fsfklskf fsfhsf b",
@@ -36,7 +32,6 @@ export const keywords = [
   },
   {
     word: "Computer",
-    story: "",
     hint: `c _ m _ u _ e r`,
     one_liner:
       "This is a one-liner for video keyword sdjfhskhfksdf dsbnbfjksdh jhfsd jkhfsds fsjhfslkjf fslkjjf fsdklj fsfklskf fsfhsf b",
@@ -45,7 +40,6 @@ export const keywords = [
   },
   {
     word: "Packet",
-    story: "",
     hint: `p _ c k _ t`,
     one_liner: "",
     description:
@@ -53,7 +47,6 @@ export const keywords = [
   },
   {
     word: "Switch",
-    story: "",
     hint: `s _ i t _ h`,
     one_liner: "",
     description:
@@ -61,7 +54,6 @@ export const keywords = [
   },
   {
     word: "Router",
-    story: "",
     hint: `r _ u _ e r`,
     one_liner:
       "dsffesrdfg dfsdf sddfsaf sd dfsdafsaThis is a one-liner for video keyword sdjfhskhfksdf dsbnbfjksdh jhfsd jkhfsds fsjhfslkjf fslkjjf fsdklj fsfklskf fsfhsf b",
@@ -70,7 +62,6 @@ export const keywords = [
   },
   {
     word: "Virus",
-    story: "",
     hint: ``,
     one_liner: "",
     description:
@@ -78,7 +69,6 @@ export const keywords = [
   },
   {
     word: "Malware",
-    story: "",
     hint: ``,
     one_liner: "",
     description:
@@ -86,21 +76,18 @@ export const keywords = [
   },
   {
     word: "Record",
-    story: "",
     hint: ``,
     one_liner: "",
     description: "Every item you put into your database is called a ‘record’.",
   },
   {
     word: "Webpage",
-    story: "",
     hint: ``,
     one_liner: "",
     description: "A web page is a single digital document.",
   },
   {
     word: "Apps",
-    story: "",
     hint: ``,
     one_liner: "",
     description:
@@ -108,7 +95,6 @@ export const keywords = [
   },
   {
     word: "Pixel",
-    story: "",
     hint: ``,
     one_liner: "",
     description:
@@ -116,28 +102,24 @@ export const keywords = [
   },
   {
     word: "Integer",
-    story: "",
     hint: ``,
     one_liner: "",
     description: "Data of type integer",
   },
   {
     word: "Character",
-    story: "",
     hint: ``,
     one_liner: "",
     description: "",
   },
   {
     word: "Java",
-    story: "",
     hint: ``,
     one_liner: "",
     description: "A High-Level programming language",
   },
   {
     word: "JavaScript",
-    story: "",
     hint: ``,
     one_liner: "",
     description:
@@ -145,35 +127,30 @@ export const keywords = [
   },
   {
     word: "HTML",
-    story: "",
     hint: ``,
     one_liner: "",
     description: "Short for Hyper Text Markup Language",
   },
   {
     word: "CSS",
-    story: "",
     hint: ``,
     one_liner: "",
     description: "Language used for styling purposes",
   },
   {
     word: "Python",
-    story: "",
     hint: ``,
     one_liner: "",
     description: "A High-Level programming language",
   },
   {
     word: "Scratch",
-    story: "",
     hint: ``,
     one_liner: "",
     description: "Beginner friendly block-based programming language",
   },
   {
     word: "Code",
-    story: "",
     hint: ``,
     one_liner: "",
     description: "Computer code is a set of instructions given to a computer",
@@ -184,7 +161,6 @@ export const keywords = [
     one_liner: "",
     description:
       "A sequence of logical instructions or steps needed to finish a task. Can be performed with or without a computer.",
-    story: "story",
   },
   {
     word: "Bit",
@@ -192,7 +168,6 @@ export const keywords = [
     one_liner: "",
     description:
       "A bit is the smallest measure of data in a computer. A bit has a single binary value, meaning it has a value of zero, or one.",
-    story: "story",
   },
   {
     word: "Command",
@@ -200,7 +175,6 @@ export const keywords = [
     one_liner: "",
     description:
       "A command is given to a computer, by a user, that tells it to do something.",
-    story: "story",
   },
   {
     word: "Debugging",
@@ -208,7 +182,6 @@ export const keywords = [
     one_liner: "",
     description:
       "The process of finding and fixing bugs in a computer program.",
-    story: "story",
   },
   {
     word: "Function",
@@ -216,7 +189,6 @@ export const keywords = [
     one_liner: "",
     description:
       "A function is a specific section of a program that performs a task or routine.",
-    story: "story",
   },
   {
     word: "Program",
@@ -224,7 +196,6 @@ export const keywords = [
     one_liner: "",
     description:
       "A program is an application or a piece of software. It is written in code, also known as a programming language.",
-    story: "story",
   },
   {
     word: "Compiler",
@@ -232,7 +203,6 @@ export const keywords = [
     one_liner: "",
     description:
       "A software that is used to convert human-readable code to machine-readable code.",
-    story: "story",
   },
   {
     word: "Logic",
@@ -240,7 +210,6 @@ export const keywords = [
     one_liner: "",
     description:
       "A way of solving a problem that uses careful thought and reasoning.",
-    story: "story",
   },
   {
     word: "Loop",
@@ -248,14 +217,12 @@ export const keywords = [
     one_liner: "",
     description:
       "A set of instructions that a computer program repeats over and over again.",
-    story: "story",
   },
   {
     word: "Sequence",
     hint: ``,
     one_liner: "",
     description: "Helps us to ensure that things happen in the correct order.",
-    story: "story",
   },
   {
     word: "Internet",
@@ -263,21 +230,18 @@ export const keywords = [
     one_liner: "",
     description:
       "The internet is basically computers connected to each other around the world.",
-    story: "story",
   },
   {
     word: "Hardware",
     hint: ``,
     one_liner: "",
     description: "All the mechanical and electronic parts of a computer.",
-    story: "story",
   },
   {
     word: "Software",
     hint: ``,
     one_liner: "",
     description: "Any of the programs that are written operate a computer.",
-    story: "story",
   },
   {
     word: "Input",
@@ -285,7 +249,6 @@ export const keywords = [
     one_liner: "",
     description:
       "Some parts which put information into a computer. They are called ‘input’ parts.",
-    story: "story",
   },
   {
     word: "Output",
@@ -293,7 +256,6 @@ export const keywords = [
     one_liner: "",
     description:
       "Other parts which allow the computer to send information out. They are known as ‘output’ parts.",
-    story: "story",
   },
   {
     word: "Decomposition",
@@ -302,14 +264,12 @@ export const keywords = [
       "Breaking down a problem into smaller parts to make it easier to solve",
     description:
       "Decomposition is when we break a problem down into smaller parts to make it easier to tackle.",
-    story: "story",
   },
   {
     word: "Variables",
     hint: ``,
     one_liner: "",
     description: "Something that can change or that has no fixed value.",
-    story: "story",
   },
   {
     word: "Bugs",
@@ -317,7 +277,6 @@ export const keywords = [
     one_liner: "",
     description:
       "Computer programmers sometimes make mistakes when writing their code. These mistakes are known as ‘bugs’.",
-    story: "story",
   },
   {
     word: "Database",
@@ -325,77 +284,66 @@ export const keywords = [
     one_liner: "",
     description:
       "A database is a computerized system that makes it easy to search, select and store information.",
-    story: "story",
   },
   {
     word: "Boolean",
     hint: ``,
     one_liner: "",
     description: "Type of data that can have either true or false values.",
-    story: "story",
   },
   {
     word: "Array",
     hint: ``,
     one_liner: "",
     description: "A large set elements of similar type",
-    story: "story",
   },
   {
     word: "Float",
     hint: ``,
     one_liner: "",
     description: "Data type consisting numbers with decimal values",
-    story: "story",
   },
   {
     word: "String",
     hint: ``,
     one_liner: "",
     description: "It’s a set of characters",
-    story: "story",
   },
   {
     word: "Binary",
     hint: ``,
     one_liner: "",
     description: "Binary is a number system composed of 0s and 1s.",
-    story: "story",
   },
   {
     word: "Byte",
     hint: ``,
     one_liner: "",
     description: "A group of 8 binary digits or bits",
-    story: "story",
   },
   {
     word: "Constant",
     hint: ``,
     one_liner: "",
     description: "Something that cannot be changed",
-    story: "story",
   },
   {
     word: "Comments",
     hint: ``,
     one_liner: "",
     description: "A block of code that shall not be executed",
-    story: "story",
   },
   {
     word: "Return",
     hint: ``,
     one_liner: "",
     description: "Gives back a value in a function ",
-    story: "story",
   },
   {
     word: "Programmer",
     hint: ``,
     one_liner: "",
     description: "A person who codes for a computer",
-    story: "story",
   },
   {
     word: "Iteration",
@@ -403,7 +351,6 @@ export const keywords = [
     one_liner: "",
     description:
       "Solving a bigger problem by dividing it into smaller problems in a defined way until the problem is solved.",
-    story: "story",
   },
   {
     word: "Recursion",
@@ -411,7 +358,6 @@ export const keywords = [
     one_liner: "",
     description:
       "Solving a bigger problem by dividing it into smaller problems in a defined way until the problem is solved",
-    story: "story for word 4",
   },
 ];
 
