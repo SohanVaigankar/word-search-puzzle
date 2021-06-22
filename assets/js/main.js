@@ -106,9 +106,6 @@ function generateWordList() {
           "Instruction 3",
           "Instruction 4",
         ];
-        // if (object.story !== "") {
-        //   wordList.push(object.word);
-        // }
         break;
 
       case 3:
