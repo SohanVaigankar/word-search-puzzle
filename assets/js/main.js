@@ -162,8 +162,8 @@ function generateWordList() {
     <span class="visually-hidden">Next</span>
     </button>
     </div>`;
-
-    const selectStory = story[Math.floor(Math.random() * story.length)];
+    // Math.floor(Math.random() * story.length)
+    const selectStory = story[1];
     console.log(selectStory);
     console.log("Story:" + selectStory.part[0].content);
     const carouselIndicators = document.querySelector(".carousel-indicators");
@@ -177,10 +177,10 @@ function generateWordList() {
         }></button>`;
         carouselInner.innerHTML = `
         <div class="carousel-item h-100 w-100 active ">
-          <p>${selectStory.part[i].content}</p>
+          <p class="story-text mt-3 p-4 ">${selectStory.part[i].content}</p>
           <div class="carousel-caption d-flex d-md-block ">
-            <h5 class="text-colorrrr fs-1">${"Part " + (i + 1)}</h5>
-            <p class="text-colorrrr fs-3">Some representative placeholder content for the first slide.</p>
+            <h5 class="text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
+            <!-- <p class="text-colorrrr fs-3">Some representative placeholder content for the first slide.</p>-->
           </div>
         </div>`;
       } else {
@@ -190,10 +190,12 @@ function generateWordList() {
         }></button>`;
         carouselInner.innerHTML += `
           <div class="carousel-item h-100 w-100">
-            <p>${selectStory.part[i].content}</p>
+            <p class="story-text mt-3 p-4  text-start">${
+              selectStory.part[i].content
+            }</p>
             <div class="carousel-caption display-5 d-none d-md-block">
               <h5 class="text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
-              <p class="text-colorrrr fs-3">Some representative placeholder content for the second slide.</p>
+             <!-- <p class="text-colorrrr fs-3">Some representative placeholder content for the second slide.</p>-->
             </div>
           </div>`;
       }

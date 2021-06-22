@@ -17,7 +17,6 @@ html {
 }
 
 body {
-  /* width: 100vw; */
   font-size: 1.5rem;
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
@@ -113,7 +112,6 @@ body {
 
 .oneliner:hover {
   border-radius: 1rem;
-  /* opacity: 0.9; */
   background-color: #bbada0a4;
   cursor: default;
   font-weight: 400;
@@ -173,7 +171,8 @@ body {
 }
 
 .carousel {
-  height: 50rem;
+  max-height: 60rem;
+  height: 100%;
   opacity: 0.9;
 }
 
@@ -195,3 +194,10 @@ body {
 
 /* .carousel-item {
 } */
+
+.story-text {
+  margin:  0 auto;
+  text-align: start;
+  word-wrap: normal;
+  width: 85%;
+}

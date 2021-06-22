@@ -381,23 +381,23 @@ export const story = [
   {
     part: [
       {
-        content: `Story 2 part 1 word1 word2 word3 word4`,
+        content: `Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4Story 2 part 1 word1 word2 word3 word4v Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word3 word4 Story 2 part 1 word1 `,
         words: ["word1", "word2", "word3", "word4"],
       },
       {
-        content: `Story 2 part 2 word5 word6 word7 word8`,
+        content: `Story 2 part 2 word5 word6 word7 word8 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4Story 2 part 1 word1 word2 word3 word4v Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1`,
         words: ["word5", "word6", "word7", "word8"],
       },
       {
-        content: `Story 2 part 3 word9 word10 word11 word12`,
+        content: `Story 2 part 3 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4Story 2 part 1 word1 word2 word3 word4v Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word9 word10 word11 word12`,
         words: ["word9", "word10", "word11", "word12"],
       },
       {
-        content: `Story 2 part 4 word13 word14 word15 word16`,
+        content: `Story 2 part 4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4Story 2 part 1 word1 word2 word3 word4v Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word13 word14 word15 word16`,
         words: ["word13", "word14", "word15", "word16"],
       },
       {
-        content: `Story 2 part 5 word17 word18 word19 word20`,
+        content: `Story 2 part 5 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4Story 2 part 1 word1 word2 word3 word4v Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word1 word2 word3 word4 Story 2 part 1 word17 word18 word19 word20`,
         words: ["word17", "word18", "word19", "word20"],
       },
     ],
