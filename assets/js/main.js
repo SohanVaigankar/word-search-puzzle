@@ -10,6 +10,11 @@ let showAnswerFlag = false;
 let interval = 0;
 console.log(keywords.length);
 
+// Bulb Icon for Hint button
+const hintSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+<path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+</svg>`;
+
 // To generate & store random words from 'keywordList.js'
 
 // Progress bar
@@ -169,6 +174,20 @@ function generateWordList() {
     console.log("Story:" + selectStory.part[0].content);
     const carouselIndicators = document.querySelector(".carousel-indicators");
     const carouselInner = document.querySelector(".carousel-inner");
+
+    // Adding a span tag and class to all the keywords for hint system
+    let temp = [];
+    for (let i = 0; i < selectStory.part.length; i++) {
+      for (let j = 0; j < selectStory.part[i].words.length; j++) {
+        // console.log(selectStory.part[i].words[j]);
+        temp[i] = selectStory.part[i].content.replaceAll(
+          selectStory.part[i].words[j],
+          `<span class="story-hint">${selectStory.part[i].words[j]}</span>`
+        );
+      }
+      // console.log(temp);
+    }
+
     for (let i = 0; i < selectStory.part.length; i++) {
       console.log(i);
       if (i === 0) {
@@ -178,25 +197,24 @@ function generateWordList() {
         }></button>`;
         carouselInner.innerHTML = `
         <div class="carousel-item h-100 w-100 active ">
-          <p class="story-text mt-3 p-4 ">${selectStory.part[i].content}</p>
-          <div class="carousel-caption d-flex d-md-block ">
-            <h5 class="text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
-            <!-- <p class="text-colorrrr fs-3">Some representative placeholder content for the first slide.</p>-->
-          </div>
+          <p class="story-text mt-3 p-4 ">${temp[i]}</p>
+          <div class="carousel-caption d-flex">
+          <div class="h-100 w-5"></div>
+          <h5 class="part-status text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
+          <button type="button" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button> </div>
         </div>`;
       } else {
         carouselIndicators.innerHTML += `
-        <button type="button" data-bs-target="#carousel" data-bs-slide-to="${i}" aria-label=${
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="${i}" aria-label=${
           "Slide" + (i + 1)
         }></button>`;
         carouselInner.innerHTML += `
           <div class="carousel-item h-100 w-100">
-            <p class="story-text mt-3 p-4  text-start">${
-              selectStory.part[i].content
-            }</p>
-            <div class="carousel-caption display-5 d-none d-md-block">
-              <h5 class="text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
-             <!-- <p class="text-colorrrr fs-3">Some representative placeholder content for the second slide.</p>-->
+            <p class="story-text mt-3 p-4  text-start">${temp[i]}</p>
+            <div class="carousel-caption display-5 d-flex ">
+            <div class="h-100 w-5"></div>
+            <h5 class="part-status text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
+            <button type="button" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button>
             </div>
           </div>`;
       }
@@ -227,9 +245,7 @@ function generateWordList() {
                 ${keywords.find(({ word }) => word === currentWord).one_liner}
                 </p>
                 <button type="button" class="btn hint-button btn-lg btn-primary col-1 text-center m-auto fs-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
-                <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
-                </svg> Hint</button>
+                ${hintSVG} Hint</button>
                 </div>`;
         break;
       default:

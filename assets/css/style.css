@@ -183,8 +183,8 @@ body {
 .carousel-caption {
   text-align: center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -208,4 +208,18 @@ body {
 
 .carousel-control-prev{
   margin-left: -2rem;
+}
+
+.story-hint{
+  font-weight: 500;
+  color: rgb(132, 0, 255);
+  text-shadow: violet 0.1rem 0.1rem 0.1rem;
+}
+
+.part-status{
+  padding-left: 5rem;
+}
+
+.hint-button{
+  margin-bottom: -1rem;
 }
