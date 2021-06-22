@@ -150,7 +150,7 @@ function generateWordList() {
 
   // Displays stories inside a carousel if level.levelcount=2
   if (level.level_count === 2) {
-    puzzleInfoBlock.innerHTML += `<div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    puzzleInfoBlock.innerHTML += `<div id="carousel" class="carousel carousel-dark " data-bs-ride="carousel">
     <div class="carousel-indicators"></div>
     <div class="carousel-inner h-100 w-100"></div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
