@@ -1,4 +1,4 @@
-import { keywords } from "./keywordList.js";
+import { keywords, story } from "./keywordList.js";
 
 const progressBar = document.querySelector(".progress-bar");
 const restartButton = document.querySelector(".restart");
@@ -67,7 +67,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 // Code to change word list according to the current level
 
 // Updates Level status
-const level = { level_count: 3, no_of_words: 7 };
+const level = { level_count: 2, no_of_words: 7 };
 
 document.querySelector(
   ".level-status"
@@ -98,7 +98,7 @@ function generateWordList() {
         break;
       case 2:
         // For level 2 : medium
-        info_title = "Stories";
+        info_title = "Story";
         levelClasses = " col margin-left";
         instructionList = [
           "Instruction 1",
@@ -106,9 +106,9 @@ function generateWordList() {
           "Instruction 3",
           "Instruction 4",
         ];
-        if (object.story !== "") {
-          wordList.push(object.word);
-        }
+        // if (object.story !== "") {
+        //   wordList.push(object.word);
+        // }
         break;
 
       case 3:
@@ -137,7 +137,7 @@ function generateWordList() {
   wordIndex = wordIndex.sort(() => Math.random() - 0.5);
   console.log(wordIndex);
 
-  // Adds required classes to nfo-display-block
+  // Adds required classes to info-display-block
   document.querySelector(
     ".info-display-block"
   ).innerHTML = `<div class="puzzle-info-block ${levelClasses} text-center p-3 display-3"></div>`;
@@ -150,44 +150,54 @@ function generateWordList() {
 
   // Displays stories inside a carousel if level.levelcount=2
   if (level.level_count === 2) {
-    puzzleInfoBlock.innerHTML += `<div id="carouselExampleCaptions" class="carousel bg-dark" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="..." class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                    </div>
-                    </div>
-                    <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
-                    </div>
-                    </div>
-                    <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-        </div>
-        </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-        </button>
+    puzzleInfoBlock.innerHTML += `<div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators"></div>
+    <div class="carousel-inner h-100 w-100"></div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+    </button>
+    </div>`;
+
+    const selectStory = story[Math.floor(Math.random() * story.length)];
+    console.log(selectStory);
+    console.log("Story:" + selectStory.part[0].content);
+    const carouselIndicators = document.querySelector(".carousel-indicators");
+    const carouselInner = document.querySelector(".carousel-inner");
+    for (let i = 0; i < selectStory.part.length; i++) {
+      console.log(i);
+      if (i === 0) {
+        carouselIndicators.innerHTML = `
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="${i}" class="active" aria-current="true" aria-label=${
+          "Slide" + i + 1
+        }></button>`;
+        carouselInner.innerHTML = `
+        <div class="carousel-item h-100 w-100 active ">
+          <p>${selectStory.part[i].content}</p>
+          <div class="carousel-caption d-flex d-md-block ">
+            <h5 class="text-colorrrr fs-1">${"Part " + (i + 1)}</h5>
+            <p class="text-colorrrr fs-3">Some representative placeholder content for the first slide.</p>
+          </div>
         </div>`;
+      } else {
+        carouselIndicators.innerHTML += `
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="${i}" aria-label=${
+          "Slide" + (i + 1)
+        }></button>`;
+        carouselInner.innerHTML += `
+          <div class="carousel-item h-100 w-100">
+            <p>${selectStory.part[i].content}</p>
+            <div class="carousel-caption display-5 d-none d-md-block">
+              <h5 class="text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
+              <p class="text-colorrrr fs-3">Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>`;
+      }
+    }
   }
 
   // Adds instructions to the offcanvas
@@ -203,6 +213,9 @@ function generateWordList() {
         puzzleInfoBlock.innerHTML += `<p class="word noselect p-1 px-5 mx-4 text-start">${
           i + 1 + ` . ` + currentWord
         }</p>`;
+        break;
+      case 2:
+        // This case is added just to avoid logging 'INCORRECT Level' error
         break;
       case 3:
         puzzleInfoBlock.innerHTML += `<div class="oneliner row noselect p-1 px-5 mx-4">
@@ -225,10 +238,10 @@ function generateWordList() {
   // Hint Button
   // const hintButton = document.querySelector(".hint-button");
   // hintButton.addEventListener("click", (event) => {
-    // console.log(event);
-    // document.querySelector(".modal-body").textContent = keywords.find(
-    //   ({ word }) => word === currentWord
-    // ).hint;
+  // console.log(event);
+  // document.querySelector(".modal-body").textContent = keywords.find(
+  //   ({ word }) => word === currentWord
+  // ).hint;
   // });
 
   instructionFun(instructionList);

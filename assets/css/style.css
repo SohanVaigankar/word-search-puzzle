@@ -43,7 +43,6 @@ body {
   display: grid;
 }
 
-
 .puzzle-controllers {
   margin: 0 auto;
   width: 100%;
@@ -168,7 +167,32 @@ body {
   margin-left: -3rem;
 }
 
-.modal-dialog{
+.modal-dialog {
   left: 20%;
   top: 40%;
+}
+
+.carousel {
+  height: 50rem;
+  opacity: 0.9;
+}
+
+.text-colorrrr {
+  color: var(--primary-text-color) important;
+}
+
+.carousel-caption {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-inner {
+  background-color: var(--secondary-background-color);
+}
+
+.carousel-item {
+  /* border: 2px solid red; */
 }
