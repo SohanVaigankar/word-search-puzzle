@@ -2,7 +2,11 @@ import { keywords, story } from "./keywordList.js";
 
 const progressBar = document.querySelector(".progress-bar");
 const restartButton = document.querySelector(".restart");
-
+const scoreElement = document.querySelector(".score-span");
+let score = 0;
+let correctFlag = false;
+let hintUsed = false;
+let showAnswerFlag = false;
 let interval = 0;
 console.log(keywords.length);
 
@@ -261,3 +265,16 @@ restartButton.addEventListener("click", () => {
     progressBarFun();
   }, 1000);
 });
+
+// Score
+function updateScore(correctFlag, hintFlag, showAnswerFlag) {
+  let incrementValue = 10;
+  if (correctFlag === true && hintFlag === true)
+    score = score + incrementValue / 2;
+  else if (correctFlag) score = score + incrementValue;
+  // else if(correctFlag && hintFlag) score = score + (incrementValue/2);
+
+  scoreElement.textContent = score;
+}
+
+updateScore(correctFlag, hintUsed, showAnswerFlag);
