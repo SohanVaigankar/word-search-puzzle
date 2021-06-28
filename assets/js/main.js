@@ -76,7 +76,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 // Code to change word list according to the current level
 
 // Updates Level status
-const level = { level_count: 2, no_of_words: 7 };
+const level = { level_count: 1, no_of_words: 7 };
 
 document.querySelector(
   ".level-status"
@@ -101,7 +101,7 @@ function generateWordList() {
           "Instruction 3",
           "Instruction 4",
         ];
-        if (object.one_liner === "" && object.story === "") {
+        if (object.one_liner === "") {
           wordList.push(object.word);
         }
         break;
@@ -213,7 +213,9 @@ function generateWordList() {
             <p class="story-text mt-3 p-4  text-start">${temp[i]}</p>
             <div class="carousel-caption display-5 d-flex ">
             <div class="h-100 w-5"></div>
-            <h5 class="part-status text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
+            <h5 class="part-status text-colorrrr fs-1 ">${
+              "Part " + (i + 1)
+            }</h5>
             <button type="button" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button>
             </div>
           </div>`;
@@ -250,6 +252,7 @@ function generateWordList() {
         break;
       default:
         console.error("Invalid Level");
+        break;
     }
     randomWordList.push(currentWord);
   }
