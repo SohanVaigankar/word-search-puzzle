@@ -317,7 +317,6 @@ function updateScore(correctFlag, hintFlag, showAnswerFlag) {
 
 updateScore(correctFlag, hintUsed, showAnswerFlag);
 
-
 /* 
 // Level system
 
