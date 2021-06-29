@@ -79,53 +79,23 @@ document.querySelector(
   ".level-status"
 ).textContent = `Level ${level.level_count}`;
 
-// levelInitializer returns the basic info of the current level
+// levelInitializer creates a wordList array of keywords for the current level
 function levelInitializer(object, level_count, wordList) {
   switch (level_count) {
     case 1:
-      // For level 1: easy
       if (object.one_liner === "") {
         wordList.push(object.word);
       }
-      return {
-        info_title: "Word List",
-        levelClasses: " col-5",
-        instructionList: [
-          "Instruction 1",
-          "Instruction 2",
-          "Instruction 3",
-          "Instruction 4",
-        ],
-      };
+      break;
 
     case 2:
-      // For level 2 : medium
-      return {
-        info_title: "Story",
-        levelClasses: " col margin-left",
-        instructionList: [
-          "Instruction 1",
-          "Instruction 2",
-          "Instruction 3",
-          "Instruction 4",
-        ],
-      };
+      break;
 
     case 3:
-      // For level 3: hard
       if (object.one_liner !== "") {
         wordList.push(object.word);
       }
-      return {
-        info_title: "One Liners",
-        levelClasses: " col margin-left",
-        instructionList: [
-          "Instruction 1",
-          "Instruction 2",
-          "Instruction 3",
-          "Instruction 4",
-        ],
-      };
+      break;
 
     default:
       console.error("Invalid Level! Keyword generation failed");
@@ -140,23 +110,46 @@ function generateWordList() {
   let instructionList = [];
   let levelClasses = "";
 
+  switch (level.level_count) {
+    case 1:
+      // For level 1: easy
+      info_title = "Word List";
+      levelClasses = " col-5";
+      instructionList = [
+        "Instruction 1",
+        "Instruction 2",
+        "Instruction 3",
+        "Instruction 4",
+      ];
+      break;
+    case 2:
+      // For level 2: medium
+      info_title = "Story";
+      levelClasses = " col margin-left";
+      instructionList = [
+        "Instruction 1",
+        "Instruction 2",
+        "Instruction 3",
+        "Instruction 4",
+      ];
+      break;
+    case 3:
+      // For level 3: hard
+      info_title = "One Liners";
+      levelClasses = " col margin-left";
+      instructionList = [
+        "Instruction 1",
+        "Instruction 2",
+        "Instruction 3",
+        "Instruction 4",
+      ];
+      break;
+    default:
+      console.error(`${level.level_count} doesn't exist!!`);
+  }
+
   keywords.forEach((object) => {
     levelInitializer(object, level.level_count, wordList);
-    info_title = levelInitializer(
-      object,
-      level.level_count,
-      wordList
-    ).info_title;
-    instructionList = levelInitializer(
-      object,
-      level.level_count,
-      wordList
-    ).instructionList;
-    levelClasses = levelInitializer(
-      object,
-      level.level_count,
-      wordList
-    ).levelClasses;
   });
 
   // Adds required classes to info-display-block
