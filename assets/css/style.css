@@ -29,7 +29,7 @@ body {
 
 .progress {
   top: var(--navbar-height);
-  position: sticky;
+  position: fixed;
 }
 
 .progress-bar {
@@ -37,9 +37,12 @@ body {
 }
 
 .container {
+  top: calc(var(--navbar-height) + 2rem);
+  position: sticky;
   max-width: 90%;
   background-color: var(--secondary-background-color);
   display: grid;
+  margin-top: 2rem;
 }
 
 .puzzle-controllers {
@@ -192,34 +195,317 @@ body {
   background-color: var(--secondary-background-color);
 }
 
-/* .carousel-item {
-} */
-
 .story-text {
-  margin:  0 auto;
+  margin: 0 auto;
   text-align: start;
   word-wrap: normal;
   width: 85%;
 }
 
-.carousel-control-next{
+.carousel-control-next {
   margin-right: -2rem;
 }
 
-.carousel-control-prev{
+.carousel-control-prev {
   margin-left: -2rem;
 }
 
-.story-hint{
+.story-hint {
   font-weight: 500;
   color: rgb(132, 0, 255);
   text-shadow: violet 0.1rem 0.1rem 0.1rem;
 }
 
-.part-status{
+.part-status {
   padding-left: 7rem;
 }
 
-.hint-button{
+.hint-button {
   margin-bottom: -1rem;
+}
+
+@media (max-width: 1915px) {
+  .carousel {
+    height: 53rem;
+  }
+
+  .margin-left {
+    margin-left: -2rem;
+  }
+
+  .padding-left {
+    padding-left: -2rem;
+  }
+
+  .level-status,
+  .puzzle-grid {
+    margin-top: 1rem;
+  }
+
+  .puzzle-info-block {
+    margin-top: -2rem;
+    font-size: 2.3rem;
+  }
+
+  .carousel-caption {
+    align-items: flex-start;
+    margin-bottom: -1rem;
+  }
+
+  .instructions {
+    width: 12rem;
+  }
+
+  .scores {
+    font-size: 4rem;
+  }
+
+  .info-title {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 1505px) {
+  .puzzle-grid {
+    height: 65rem;
+    width: 65rem;
+  }
+
+  .grid div {
+    box-sizing: border-box;
+    min-width: 4.3rem;
+    height: 4.3rem;
+    background-color: #ccc0b3;
+    border: 0.3rem solid #bbada0;
+    border-radius: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.45rem;
+    cursor: crosshair;
+  }
+}
+
+@media (max-width: 1440px) {
+  .puzzle-grid {
+    height: 60rem;
+    width: 60rem;
+  }
+
+  .grid {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #bbada0;
+    border: 0.5rem solid #bbada0;
+    border-radius: 1rem;
+  }
+
+  .grid div {
+    box-sizing: border-box;
+    min-width: 4rem;
+    height: 4rem;
+    background-color: #ccc0b3;
+    border: 0.3rem solid #bbada0;
+    border-radius: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    cursor: crosshair;
+  }
+
+  .carousel {
+    height: 50rem;
+  }
+
+  .margin-left {
+    margin-left: -2rem;
+  }
+
+  .padding-left {
+    padding-left: -2rem;
+  }
+
+  .level-status,
+  .puzzle-grid {
+    margin-top: 1rem;
+  }
+
+  .puzzle-info-block {
+    margin-top: -2rem;
+    font-size: 2.1rem;
+  }
+
+  .carousel-caption {
+    align-items: flex-start;
+    margin-bottom: -1rem;
+  }
+
+  .instructions {
+    width: 12rem;
+  }
+
+  .carousel-item {
+    margin-top: -2rem;
+  }
+
+  .scores {
+    font-size: 3rem;
+  }
+
+  .info-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 1298px) {
+  .container {
+    max-width: 95%;
+  }
+
+  .carousel {
+    max-height: 60rem;
+    height: 50rem;
+  }
+}
+
+@media (max-width: 1240px) {
+  .puzzle-grid {
+    height: 51rem;
+    width: 51rem;
+  }
+
+  .grid {
+    width: 92%;
+    height: 92%;
+    border: 0.2rem solid #bbada0;
+    border-radius: 0.8rem;
+  }
+
+  .grid div {
+    min-width: 3.25rem;
+    height: 3.25rem;
+    border: 0.2rem solid #bbada0;
+    border-radius: 0.7rem;
+    font-size: 2.3rem;
+  }
+
+  .margin-left {
+    margin-left: -2rem;
+  }
+
+  .padding-left {
+    padding-left: -2rem;
+  }
+
+  .level-status,
+  .puzzle-grid {
+    margin-top: 1rem;
+  }
+
+  .puzzle-info-block {
+    margin-top: -2rem;
+    font-size: 2rem;
+  }
+
+  .carousel-caption {
+    align-items: flex-start;
+    margin-bottom: -1rem;
+  }
+
+  .instructions {
+    width: 12rem;
+  }
+
+  .carousel-item {
+    margin-top: -2rem;
+  }
+
+  .scores {
+    font-size: 3rem;
+  }
+
+  .info-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 1180px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1125px) {
+  .carousel {
+    height: 57rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .puzzle-grid {
+    height: 50rem;
+    width: 50rem;
+  }
+
+  .grid {
+    width: 88%;
+    height: 91%;
+    border: 0.2rem solid #bbada0;
+    border-radius: 0.8rem;
+  }
+
+  .grid div {
+    min-width: 3.1rem;
+    height: 3.1rem;
+    border: 0.2rem solid #bbada0;
+    border-radius: 0.6rem;
+    font-size: 2.2rem;
+  }
+
+  .carousel {
+    max-height: 70rem;
+    height: 58rem;
+  }
+
+  .margin-left {
+    margin-left: -2rem;
+  }
+
+  .padding-left {
+    padding-left: -2rem;
+  }
+
+  .level-status,
+  .puzzle-grid {
+    margin-top: 5rem;
+  }
+
+  .puzzle-info-block {
+    margin-top: -2rem;
+    font-size: 2rem;
+  }
+
+  .carousel-caption {
+    align-items: flex-start;
+    margin-bottom: -1rem;
+  }
+
+  .instructions {
+    width: 12rem;
+  }
+
+  .carousel-item {
+    margin-top: -2rem;
+  }
+
+  .scores {
+    font-size: 3rem;
+  }
+
+  .info-title {
+    font-size: 3rem;
+  }
 }

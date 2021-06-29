@@ -73,10 +73,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   generateWordList();
 });
 
-// Code to change word list according to the current level
-
-// Updates Level status
-const level = { level_count: 1, no_of_words: 7 };
+var level = { level_count: 2, no_of_words: 7 };
 
 document.querySelector(
   ".level-status"
