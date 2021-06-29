@@ -73,72 +73,91 @@ window.addEventListener("DOMContentLoaded", (event) => {
   generateWordList();
 });
 
-var level = { level_count: 2, no_of_words: 7 };
+var level = { level_count: 1, no_of_words: 7 };
 
 document.querySelector(
   ".level-status"
 ).textContent = `Level ${level.level_count}`;
+
+// levelInitializer returns the basic info of the current level
+function levelInitializer(object, level_count, wordList) {
+  switch (level_count) {
+    case 1:
+      // For level 1: easy
+      if (object.one_liner === "") {
+        wordList.push(object.word);
+      }
+      return {
+        info_title: "Word List",
+        levelClasses: " col-5",
+        instructionList: [
+          "Instruction 1",
+          "Instruction 2",
+          "Instruction 3",
+          "Instruction 4",
+        ],
+      };
+
+    case 2:
+      // For level 2 : medium
+      return {
+        info_title: "Story",
+        levelClasses: " col margin-left",
+        instructionList: [
+          "Instruction 1",
+          "Instruction 2",
+          "Instruction 3",
+          "Instruction 4",
+        ],
+      };
+
+    case 3:
+      // For level 3: hard
+      if (object.one_liner !== "") {
+        wordList.push(object.word);
+      }
+      return {
+        info_title: "One Liners",
+        levelClasses: " col margin-left",
+        instructionList: [
+          "Instruction 1",
+          "Instruction 2",
+          "Instruction 3",
+          "Instruction 4",
+        ],
+      };
+
+    default:
+      console.error("Invalid Level! Keyword generation failed");
+      break;
+  }
+}
 
 // Creates a list of kwywords based of the level specified
 function generateWordList() {
   let info_title = "";
   let wordList = [];
   let instructionList = [];
-  // document.querySelector('.info-display-block div').classList.remove(colSize);
   let levelClasses = "";
+
   keywords.forEach((object) => {
-    switch (level.level_count) {
-      case 1:
-        // For level 1: easy
-        info_title = "Word List";
-        levelClasses = " col-5";
-        instructionList = [
-          "Instruction 1",
-          "Instruction 2",
-          "Instruction 3",
-          "Instruction 4",
-        ];
-        if (object.one_liner === "") {
-          wordList.push(object.word);
-        }
-        break;
-      case 2:
-        // For level 2 : medium
-        info_title = "Story";
-        levelClasses = " col margin-left";
-        instructionList = [
-          "Instruction 1",
-          "Instruction 2",
-          "Instruction 3",
-          "Instruction 4",
-        ];
-        break;
-
-      case 3:
-        // For level 3: hard
-        info_title = "One Liners";
-        levelClasses = " col margin-left";
-        instructionList = [
-          "Instruction 1",
-          "Instruction 2",
-          "Instruction 3",
-          "Instruction 4",
-        ];
-        if (object.one_liner !== "") {
-          wordList.push(object.word);
-        }
-        break;
-      default:
-        console.error("Invalid Level! Keyword generation failed");
-        break;
-    }
+    levelInitializer(object, level.level_count, wordList);
+    info_title = levelInitializer(
+      object,
+      level.level_count,
+      wordList
+    ).info_title;
+    instructionList = levelInitializer(
+      object,
+      level.level_count,
+      wordList
+    ).instructionList;
+    levelClasses = levelInitializer(
+      object,
+      level.level_count,
+      wordList
+    ).levelClasses;
   });
-
-  // Inserts word list into the HTML
-  let randomWordList = [];
-  let wordIndex = Array.from(Array(wordList.length).keys());
-  wordIndex = wordIndex.sort(() => Math.random() - 0.5);
-  console.log(wordIndex);
 
   // Adds required classes to info-display-block
   document.querySelector(
@@ -150,6 +169,40 @@ function generateWordList() {
 
   // Displays title A/C to the level
   puzzleInfoBlock.innerHTML = `<p class="info-title noselect px-5 mx-4 display-3 pt-3 pb-3 text-decoration-underline">${info_title}</p>`;
+
+  // Inserts word list into the HTML
+  let randomWordList = [];
+  let wordIndex = Array.from(Array(wordList.length).keys());
+  wordIndex = wordIndex.sort(() => Math.random() - 0.5);
+  console.log(wordIndex);
+
+  for (let i = 0; i < level.no_of_words; i++) {
+    var currentWord = wordList[wordIndex[i]];
+    switch (level.level_count) {
+      case 1:
+        puzzleInfoBlock.innerHTML += `<p class="word noselect p-1 px-5 mx-4 text-start">${
+          i + 1 + ` . ` + currentWord
+        }</p>`;
+        break;
+      case 2:
+        // This case is added just to avoid logging 'INCORRECT Level' error
+        break;
+      case 3:
+        insertOneLiner(
+          i,
+          puzzleInfoBlock,
+          hintSVG,
+          keywords.find(({ word }) => word === currentWord).one_liner
+        );
+        break;
+      default:
+        console.error("Invalid Level");
+        break;
+    }
+    randomWordList.push(currentWord);
+  }
+  console.log("WordList:" + wordList);
+  console.log("Random Word List:" + randomWordList);
 
   // Displays stories inside a carousel if level.levelcount=2
   if (level.level_count === 2) {
@@ -189,32 +242,30 @@ function generateWordList() {
       console.log(i);
       if (i === 0) {
         carouselIndicators.innerHTML = `
-        <button type="button" data-bs-target="#carousel" data-bs-slide-to="${i}" class="active" aria-current="true" aria-label=${
+          <button type="button" data-bs-target="#carousel" data-bs-slide-to="${i}" class="active" aria-current="true" aria-label=${
           "Slide" + i + 1
         }></button>`;
         carouselInner.innerHTML = `
-        <div class="carousel-item h-100 w-100 active ">
+          <div class="carousel-item h-100 w-100 active ">
           <p class="story-text mt-3 p-4 ">${temp[i]}</p>
           <div class="carousel-caption d-flex">
           <div class="h-100 w-5"></div>
           <h5 class="part-status text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
           <button type="button" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button> </div>
-        </div>`;
+          </div>`;
       } else {
         carouselIndicators.innerHTML += `
-            <button type="button" data-bs-target="#carousel" data-bs-slide-to="${i}" aria-label=${
+          <button type="button" data-bs-target="#carousel" data-bs-slide-to="${i}" aria-label=${
           "Slide" + (i + 1)
         }></button>`;
         carouselInner.innerHTML += `
           <div class="carousel-item h-100 w-100">
-            <p class="story-text mt-3 p-4  text-start">${temp[i]}</p>
-            <div class="carousel-caption display-5 d-flex ">
-            <div class="h-100 w-5"></div>
-            <h5 class="part-status text-colorrrr fs-1 ">${
-              "Part " + (i + 1)
-            }</h5>
-            <button type="button" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button>
-            </div>
+          <p class="story-text mt-3 p-4  text-start">${temp[i]}</p>
+          <div class="carousel-caption display-5 d-flex ">
+          <div class="h-100 w-5"></div>
+          <h5 class="part-status text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
+          <button type="button" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button>
+          </div>
           </div>`;
       }
     }
@@ -225,47 +276,18 @@ function generateWordList() {
     ".offcanvas-body"
   ).innerHTML = `<ol class="instructions-ol  align-items-start" mx-2 p-4> </ol>`;
   document.querySelector(".offcanvas-body ol").innerHTML = "";
-
-  for (let i = 0; i < level.no_of_words; i++) {
-    var currentWord = wordList[wordIndex[i]];
-    switch (level.level_count) {
-      case 1:
-        puzzleInfoBlock.innerHTML += `<p class="word noselect p-1 px-5 mx-4 text-start">${
-          i + 1 + ` . ` + currentWord
-        }</p>`;
-        break;
-      case 2:
-        // This case is added just to avoid logging 'INCORRECT Level' error
-        break;
-      case 3:
-        puzzleInfoBlock.innerHTML += `<div class="oneliner row noselect p-1 px-5 mx-4">
-                <p class=" p-2 col-1 text-start">${i + 1 + ` . `}</p>
-                <p class="col one-liner-content p-2 text-start ">
-                ${keywords.find(({ word }) => word === currentWord).one_liner}
-                </p>
-                <button type="button" class="btn hint-button btn-lg btn-primary col-1 text-center m-auto fs-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                ${hintSVG} Hint</button>
-                </div>`;
-        break;
-      default:
-        console.error("Invalid Level");
-        break;
-    }
-    randomWordList.push(currentWord);
-  }
-
-  // Hint Button
-  // const hintButton = document.querySelector(".hint-button");
-  // hintButton.addEventListener("click", (event) => {
-  // console.log(event);
-  // document.querySelector(".modal-body").textContent = keywords.find(
-  //   ({ word }) => word === currentWord
-  // ).hint;
-  // });
-
   instructionFun(instructionList);
-  console.log("WordList:" + wordList);
-  console.log("Random Word List:" + randomWordList);
+}
+
+function insertOneLiner(i, puzzleInfoBlock, hintSVG, one_liner) {
+  puzzleInfoBlock.innerHTML += `<div class="oneliner row noselect p-1 px-5 mx-4">
+  <p class=" p-2 col-1 text-start">${i + 1 + ` . `}</p>
+  <p class="col one-liner-content p-2 text-start ">
+  ${one_liner}
+  </p>
+  <button type="button" class="btn hint-button btn-lg btn-primary col-1 text-center m-auto fs-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  ${hintSVG} Hint</button>
+  </div>`;
 }
 
 // Restarts the puzzle at current level
