@@ -316,3 +316,28 @@ function updateScore(correctFlag, hintFlag, showAnswerFlag) {
 }
 
 updateScore(correctFlag, hintUsed, showAnswerFlag);
+
+
+/* 
+// Level system
+
+function changeLevel(correct, counter, no_of_wordsx) {
+  if (correct === true) {
+    counter++;
+    if (counter === no_of_wordsx) {
+      level_counter++;
+      console.log("level counter " + level_counter);
+      console.log("Level Finshed");
+      // generateWordList(level_count);
+    }
+    return counter;
+  }
+}
+
+let correct = true;
+let counter = 0;
+let level_counter = 1;
+let no_of_wordsx = 10;
+
+changeLevel(true, counter, no_of_wordsx)
+*/
