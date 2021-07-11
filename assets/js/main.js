@@ -4,9 +4,12 @@ const progressBar = document.querySelector(".progress-bar");
 const restartButton = document.querySelector(".restart");
 const scoreElement = document.querySelector(".score-span");
 const gameAreaEl = document.getElementById("ws-area");
+const selectStory = story[0];
 let score = 0;
+let tempScore = 0;
 let level_counter = 1;
 let hintUsed = false;
+let levelChanged = false;
 let interval = 0;
 console.log(keywords.length);
 
@@ -99,7 +102,7 @@ function levelInitializer(object, level_count, wordList) {
   }
 }
 
-// Creates a list of kwywords based of the level specified
+// Creates a list of keywords based of the level specified
 function generateWordList() {
   let info_title = "";
   let wordList = [];
@@ -218,38 +221,24 @@ function generateWordList() {
     </button>
     </div>`;
     // Math.floor(Math.random() * story.length)
-    const selectStory = story[0];
     console.log(selectStory);
     console.log("Story:" + selectStory.part[0].content);
     const carouselIndicators = document.querySelector(".carousel-indicators");
     const carouselInner = document.querySelector(".carousel-inner");
 
     // Adding a span tag and class to all the keywords for hint system
-    let temp = [];
     for (let i = 0; i < selectStory.part.length; i++) {
-      for (let j = 0; j < selectStory.part[i].words.length; j++) {
-        // console.log(selectStory.part[i].words[j]);
-        temp[i] = selectStory.part[i].content.replaceAll(
-          selectStory.part[i].words[j],
-          `<span class="story-hint">${selectStory.part[i].words[j]}</span>`
-        );
-      }
-      // console.log(temp);
-    }
-
-    for (let i = 0; i < selectStory.part.length; i++) {
-      // console.log(i);
       if (i === 0) {
         carouselIndicators.innerHTML = `
           <button type="button" data-bs-target="#carousel" data-bs-slide-to="${i}" class="active" aria-current="true" aria-label=${
           "Slide" + i + 1
         }></button>`;
         carouselInner.innerHTML = `
-          <div class="carousel-item h-100 w-100 active ">
-          <p class="story-text mt-3 p-4 ">${temp[i]}</p>
+          <div id=slide-${i} class="carousel-item h-100 w-100 active ">
+          <p class="story-text mt-3 p-4 ">${selectStory.part[i].content}</p>
           <div class="carousel-caption d-flex">
           <div class="h-100 w-5"></div>
-          <h5 class="part-status text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
+          <h5 class="part-status sep-text-color fs-1 ">${"Part " + (i + 1)}</h5>
           <button type="button" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button> </div>
           </div>`;
       } else {
@@ -258,12 +247,12 @@ function generateWordList() {
           "Slide" + (i + 1)
         }></button>`;
         carouselInner.innerHTML += `
-          <div class="carousel-item h-100 w-100">
-          <p class="story-text mt-3 p-4  text-start">${temp[i]}</p>
+          <div id=slide-${i} class="carousel-item h-100 w-100">
+          <p class="story-text mt-3 p-4  text-start">${selectStory.part[i].content}</p>
           <div class="carousel-caption display-5 d-flex ">
           <div class="h-100 w-5"></div>
-          <h5 class="part-status text-colorrrr fs-1 ">${"Part " + (i + 1)}</h5>
-          <button type="button" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button>
+          <h5 class="part-status sep-text-color fs-1 ">${"Part " + (i + 1)}</h5>
+          <button type="button" id="storyhintbtn" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button>
           </div>
           </div>`;
       }
@@ -293,7 +282,13 @@ function insertOneLiner(i, puzzleInfoBlock, hintSVG, one_liner) {
 restartButton.addEventListener("click", () => {
   gameAreaEl.innerHTML="";
   generateWordList();
+  levelChanged = true;
+  if (level.level_count === 1){
+    tempScore = 0
+  }
+  scoreElement.textContent = score;
   clearInterval(interval);
+  hintUsed = false;
   interval = 0;
   current_progress = 0;
   progressBar.setAttribute("style", `width:${current_progress}%`);
@@ -303,8 +298,62 @@ restartButton.addEventListener("click", () => {
   }, 1000);
 });
 
-document.body.addEventListener('click', function(event) {
-  if(event.target.id == 'nextlevelbtn') {
+document.addEventListener('click',function(e) {
+  if(e.target && e.target.id === "storyhintbtn") {
+    let temp = [];
+    let hintWords = [];
+    let tempUpdate = [];
+    let showHint = ""
+    let hidx = 0;
+
+    hidx = document.querySelector('.carousel-item.active').id.match(/(\d+)/)[0];
+    // console.log(hidx)
+    hintWords.push(selectStory.part[hidx].words);
+    showHint = selectStory.part[hidx].content;
+    for (let j = 0; j < hintWords[0].length; j++) {
+      showHint = showHint.replaceAll(
+        hintWords[0][j],
+        `<span class="story-hint part-${hidx+1}">${hintWords[0][j]}</span>`
+      );
+    }
+    temp.push(showHint);
+    
+    for (let i = 0; i < selectStory.part.length; i++) {
+      if (i == hidx) {
+        tempUpdate.push(`
+        <div id=slide-${hidx} class="carousel-item h-100 w-100 active">
+          <p class="story-text mt-3 p-4 ">${temp}</p>
+          <div class="carousel-caption d-flex">
+          <div class="h-100 w-5"></div>
+          <h5 class="part-status sep-text-color fs-1 ">${"Part " + (i + 1)}</h5>
+          <button type="button" id="storyhintbtn" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button> </div>
+        </div>`);
+      }else{
+        tempUpdate.push(`
+        <div id=slide-${i} class="carousel-item h-100 w-100">
+        <p class="story-text mt-3 p-4 ">${selectStory.part[i].content}</p>
+        <div class="carousel-caption display-5 d-flex ">
+        <div class="h-100 w-5"></div>
+        <h5 class="part-status sep-text-color fs-1 ">${"Part " + (i + 1)}</h5>
+        <button type="button" id="storyhintbtn" class="btn hint-button btn-lg btn-primary fs-3">${hintSVG} Hint</button>
+        </div>
+        </div>`);
+      }
+    }
+
+    hintUsed = true;
+
+    var updateFix = tempUpdate.join(' ')
+    document.querySelector(".carousel-inner").innerHTML = updateFix;
+    hintWords = [];
+    tempUpdate = [];
+    temp = [];
+    showHint = "";
+  };
+});
+
+document.addEventListener('click',function(e) {
+  if(e.target && e.target.id === "nextlevelbtn") {
     if (document.getElementById('carousel')) {
       document.querySelector(".carousel").style.setProperty("opacity",100);
     }
@@ -315,16 +364,31 @@ document.body.addEventListener('click', function(event) {
 // Score
 export function updateScore() {
   let incrementValue = 10;
-  if (hintUsed === true)
-    score = score + incrementValue / 2;
-  else score = score + incrementValue;
-  scoreElement.textContent = score;
+  if (level.level_count >= 2){
+    if (levelChanged) {
+      if (hintUsed) {
+        tempScore = score + incrementValue / 2;
+      } else tempScore = score + incrementValue;
+    } else {
+      if (hintUsed) {
+        tempScore = tempScore + incrementValue / 2;
+      } else tempScore = tempScore + incrementValue;
+    }
+  } else {
+    if (hintUsed)
+    tempScore = tempScore + incrementValue / 2;
+    else tempScore = tempScore + incrementValue; 
+  }
+  scoreElement.textContent = tempScore;
+  levelChanged = false;
 }
 
 // Level system
 export function changeLevel() {
     level_counter++;
     level.level_count = level_counter
+    levelChanged = true
+    score = tempScore
     console.log("Level counter: " + level_counter);
     console.log("Level Finished");
     document.querySelector(".level-status").textContent = `Level ${level_counter}`;
