@@ -5,9 +5,8 @@ const restartButton = document.querySelector(".restart");
 const scoreElement = document.querySelector(".score-span");
 const gameAreaEl = document.getElementById("ws-area");
 let score = 0;
-let correctFlag = false;
+let level_counter = 1;
 let hintUsed = false;
-let showAnswerFlag = false;
 let interval = 0;
 console.log(keywords.length);
 
@@ -58,6 +57,10 @@ function findAllByKey(obj, keyToFind) {
       ? acc.concat(findAllByKey(value, keyToFind))
       : acc
     , [])
+}
+
+function uniq(a) {
+  return Array.from(new Set(a));
 }
 
 // This block runs initially when the webpage is loaded
@@ -191,9 +194,9 @@ function generateWordList() {
   console.log("Random Word List:" + randomWordList);
 
   if (level.level_count === 1) {
-    gameAreaEl.wordSearch(randomWordList);
+    gameAreaEl.wordSearch(uniq(randomWordList));
   } else if (level.level_count === 2) {
-    gameAreaEl.wordSearch(findAllByKey(story[0], 'words'));
+    gameAreaEl.wordSearch(uniq(findAllByKey(story[0], 'words')));
   } else if (level.level_count === 3) {
     console.log(findAllByKey(keywords, 'one_liner'))
   } else {
@@ -288,7 +291,7 @@ function insertOneLiner(i, puzzleInfoBlock, hintSVG, one_liner) {
 
 // Restarts the puzzle at current level
 restartButton.addEventListener("click", () => {
-  createGrid();
+  gameAreaEl.innerHTML="";
   generateWordList();
   clearInterval(interval);
   interval = 0;
@@ -300,39 +303,34 @@ restartButton.addEventListener("click", () => {
   }, 1000);
 });
 
-// Score
-function updateScore(correctFlag, hintFlag, showAnswerFlag) {
-  let incrementValue = 10;
-  if (correctFlag === true && hintFlag === true)
-    score = score + incrementValue / 2;
-  else if (correctFlag) score = score + incrementValue;
-  // else if(correctFlag && hintFlag) score = score + (incrementValue/2);
+document.body.addEventListener('click', function(event) {
+  if(event.target.id == 'nextlevelbtn') {
+    if (document.getElementById('carousel')) {
+      document.querySelector(".carousel").style.setProperty("opacity",100);
+    }
+    document.getElementById("ws-game-over-outer").remove();
+  };
+});
 
+// Score
+export function updateScore() {
+  let incrementValue = 10;
+  if (hintUsed === true)
+    score = score + incrementValue / 2;
+  else score = score + incrementValue;
   scoreElement.textContent = score;
 }
 
-updateScore(correctFlag, hintUsed, showAnswerFlag);
-
-/* 
 // Level system
-
-function changeLevel(correct, counter, no_of_wordsx) {
-  if (correct === true) {
-    counter++;
-    if (counter === no_of_wordsx) {
-      level_counter++;
-      console.log("level counter " + level_counter);
-      console.log("Level Finshed");
-      // generateWordList(level_count);
+export function changeLevel() {
+    level_counter++;
+    level.level_count = level_counter
+    console.log("Level counter: " + level_counter);
+    console.log("Level Finished");
+    document.querySelector(".level-status").textContent = `Level ${level_counter}`;
+    gameAreaEl.innerHTML="";
+    generateWordList();
+    if (document.getElementById('carousel')){
+      document.querySelector(".carousel").style.setProperty("opacity",0);
     }
-    return counter;
-  }
 }
-
-let correct = true;
-let counter = 0;
-let level_counter = 1;
-let no_of_wordsx = 10;
-
-changeLevel(true, counter, no_of_wordsx)
-*/

@@ -1,3 +1,7 @@
+import { updateScore, changeLevel } from "./main.js"
+
+let wordFound = false;
+
 (function(){
   'use strict';
 
@@ -327,7 +331,7 @@
           col = selected[i].col + 1,
           el = document.querySelector('.ws-area .ws-row:nth-child(' + row + ') .ws-col:nth-child(' + col + ')');
         el.classList.add('ws-found');
-        el.classList.add('disabled');
+        wordFound = true;
       }
 
       //Cross word off list.
@@ -338,10 +342,14 @@
           if(wordListItems[i].innerHTML != "<del>"+wordListItems[i].innerHTML+"</del>") { //Check the word is never found
 			wordListItems[i].innerHTML = "<del>"+wordListItems[i].innerHTML+"</del>";
       wordListItems[i].classList.add('disabled');
-          //Increment solved words.
-          this.solved++;
 		      }
         }
+      }
+
+      if(wordFound === true){
+        updateScore();
+        this.solved++;
+        wordFound = false;
       }
 
       //Game over?
@@ -363,12 +371,17 @@
 
     //Create overlay content.
     var overlay = document.getElementById("ws-game-over-outer");
-      overlay.innerHTML = "<div class='ws-game-over-inner' id='ws-game-over-inner'>"+
-                            "<div class='ws-game-over' id='ws-game-over'>"+
-                              "<h2>Congratulations!</h2>"+
-                              "<p>You've found all of the words!</p>"+
-                            "</div>"+
-                          "</div>";
+    overlay.innerHTML = "<div class='ws-game-over-inner' id='ws-game-over-inner'>"+
+                          "<div class='ws-game-over' id='ws-game-over'>"+
+                            "<h2>Congratulations!</h2>"+
+                            "<p>You've found all of the words!</p>"+
+                            "<button type='button' id='nextlevelbtn'"+
+                            "class='nextlevel margin-top btn btn-lg btn-primary col-2 p-3'>"+
+                            "Next Level"+
+                            "</button>"+
+                          "</div>"+
+                        "</div>";
+    changeLevel();
   }
 
   /**
