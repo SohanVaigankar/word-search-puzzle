@@ -330,10 +330,11 @@
       }
 
       //Cross word off list.
-      var wordList = document.querySelector(".ws-words");
-      var wordListItems = wordList.getElementsByTagName("li");
-      for(var i=0; i<wordListItems.length; i++){
-        if(words[0] == removeDiacritics(wordListItems[i].innerHTML.toUpperCase())){			
+      var wordList = document.querySelector(".puzzle-info-block");
+      var wordListItems = wordList.getElementsByTagName("p");
+      
+      for(var i=1; i<wordListItems.length; i++){
+        if(words[0] == wordListItems[i].innerHTML.toUpperCase().replace(/[^A-Z]/g, '')){			
           if(wordListItems[i].innerHTML != "<del>"+wordListItems[i].innerHTML+"</del>") { //Check the word is never found
 			wordListItems[i].innerHTML = "<del>"+wordListItems[i].innerHTML+"</del>";
           //Increment solved words.
