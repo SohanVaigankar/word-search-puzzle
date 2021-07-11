@@ -19,6 +19,12 @@
   cursor: pointer;
 }
 
+.ws-col:hover {
+  transform: scale(1.2);
+  opacity: 0.7;
+  font-weight: 500;
+}
+
 .ws-col.ws-selected {
   background: #eee;
 }

@@ -77,34 +77,9 @@ body {
   width: 68rem;
 }
 
-.grid {
-  width: 91%;
-  height: 91%;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #bbada0;
-  border: 0.5rem solid #bbada0;
-  border-radius: 1rem;
-}
-
-.grid div {
-  box-sizing: border-box;
-  min-width: 4.5rem;
-  height: 4.5rem;
-  background-color: #ccc0b3;
-  border: 0.3rem solid #bbada0;
-  border-radius: 0.7rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
-  cursor: crosshair;
-}
-
-.grid div:hover {
-  transform: scale(1.2);
-  opacity: 0.7;
-  font-weight: 500;
+.disabled {
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 .word:hover {
@@ -270,50 +245,12 @@ body {
     height: 65rem;
     width: 65rem;
   }
-
-  .grid div {
-    box-sizing: border-box;
-    min-width: 4.3rem;
-    height: 4.3rem;
-    background-color: #ccc0b3;
-    border: 0.3rem solid #bbada0;
-    border-radius: 0.7rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.45rem;
-    cursor: crosshair;
-  }
 }
 
 @media (max-width: 1440px) {
   .puzzle-grid {
     height: 60rem;
     width: 60rem;
-  }
-
-  .grid {
-    width: 95%;
-    height: 95%;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #bbada0;
-    border: 0.5rem solid #bbada0;
-    border-radius: 1rem;
-  }
-
-  .grid div {
-    box-sizing: border-box;
-    min-width: 4rem;
-    height: 4rem;
-    background-color: #ccc0b3;
-    border: 0.3rem solid #bbada0;
-    border-radius: 0.7rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.2rem;
-    cursor: crosshair;
   }
 
   .carousel {
@@ -377,21 +314,6 @@ body {
     width: 51rem;
   }
 
-  .grid {
-    width: 92%;
-    height: 92%;
-    border: 0.2rem solid #bbada0;
-    border-radius: 0.8rem;
-  }
-
-  .grid div {
-    min-width: 3.25rem;
-    height: 3.25rem;
-    border: 0.2rem solid #bbada0;
-    border-radius: 0.7rem;
-    font-size: 2.3rem;
-  }
-
   .margin-left {
     margin-left: -2rem;
   }
@@ -448,21 +370,6 @@ body {
   .puzzle-grid {
     height: 50rem;
     width: 50rem;
-  }
-
-  .grid {
-    width: 88%;
-    height: 91%;
-    border: 0.2rem solid #bbada0;
-    border-radius: 0.8rem;
-  }
-
-  .grid div {
-    min-width: 3.1rem;
-    height: 3.1rem;
-    border: 0.2rem solid #bbada0;
-    border-radius: 0.6rem;
-    font-size: 2.2rem;
   }
 
   .carousel {
