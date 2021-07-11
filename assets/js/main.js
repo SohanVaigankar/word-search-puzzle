@@ -3,6 +3,7 @@ import { keywords, story } from "./keywordList.js";
 const progressBar = document.querySelector(".progress-bar");
 const restartButton = document.querySelector(".restart");
 const scoreElement = document.querySelector(".score-span");
+const gameAreaEl = document.getElementById("ws-area");
 let score = 0;
 let correctFlag = false;
 let hintUsed = false;
@@ -49,26 +50,18 @@ function instructionFun(instructionList) {
   });
 }
 
-// Grid implementation
-const mainGrid = document.querySelector(".grid");
-let gridSize = 13;
-let row = 0;
-let col = 0;
-
-function createGrid() {
-  mainGrid.innerHTML = "";
-  for (row = 0; row < gridSize; row++) {
-    for (col = 0; col < gridSize; col++) {
-      mainGrid.innerHTML += `<div>${String.fromCharCode(
-        97 + Math.floor(Math.random() * 26)
-      )}</div>`;
-    }
-  }
+function findAllByKey(obj, keyToFind) {
+  return Object.entries(obj)
+    .reduce((acc, [key, value]) => (key === keyToFind)
+      ? acc.concat(value)
+      : (typeof value === 'object')
+      ? acc.concat(findAllByKey(value, keyToFind))
+      : acc
+    , [])
 }
 
 // This block runs initially when the webpage is loaded
 window.addEventListener("DOMContentLoaded", (event) => {
-  createGrid();
   progressBarFun();
   generateWordList();
 });
@@ -197,9 +190,19 @@ function generateWordList() {
   console.log("WordList:" + wordList);
   console.log("Random Word List:" + randomWordList);
 
+  if (level.level_count === 1) {
+    gameAreaEl.wordSearch(randomWordList);
+  } else if (level.level_count === 2) {
+    gameAreaEl.wordSearch(findAllByKey(story[0], 'words'));
+  } else if (level.level_count === 3) {
+    console.log(findAllByKey(keywords, 'one_liner'))
+  } else {
+    console.log('Level error')
+  }
+
   // Displays stories inside a carousel if level.levelcount=2
   if (level.level_count === 2) {
-    puzzleInfoBlock.innerHTML += `<div id="carousel" class="carousel carousel-dark " data-bs-ride="carousel">
+    puzzleInfoBlock.innerHTML += `<div id="carousel" class="carousel carousel-dark " data-bs-interval="false">
     <div class="carousel-indicators"></div>
     <div class="carousel-inner h-100 w-100"></div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
@@ -212,7 +215,7 @@ function generateWordList() {
     </button>
     </div>`;
     // Math.floor(Math.random() * story.length)
-    const selectStory = story[1];
+    const selectStory = story[0];
     console.log(selectStory);
     console.log("Story:" + selectStory.part[0].content);
     const carouselIndicators = document.querySelector(".carousel-indicators");
@@ -232,7 +235,7 @@ function generateWordList() {
     }
 
     for (let i = 0; i < selectStory.part.length; i++) {
-      console.log(i);
+      // console.log(i);
       if (i === 0) {
         carouselIndicators.innerHTML = `
           <button type="button" data-bs-target="#carousel" data-bs-slide-to="${i}" class="active" aria-current="true" aria-label=${

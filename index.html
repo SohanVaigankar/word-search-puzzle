@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/wordsearch.css" />
     <title>Word Search</title>
   </head>
   <body>
@@ -99,9 +100,11 @@
             <div
               class="puzzle-grid row justify-content-center align-items-center"
             >
-              <div
-                class="grid p-1 justify-content-center align-items-center"
-              ></div>
+              <div class="wrap">
+                <section id="ws-area"></section>
+                <ul class="ws-words">
+                </ul>
+              </div>
             </div>
           </div>
           <div class="puzzle-controllers row align-items-center mt-5 p-1">
@@ -197,5 +200,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="./assets/js/main.js" type="module"></script>
+    <script src="./assets/js/utility.js"></script>
+    <script src="./assets/js/wordsearch.js"></script>
   </body>
 </html>
