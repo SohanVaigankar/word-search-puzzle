@@ -5,12 +5,16 @@ const restartButton = document.querySelector(".restart");
 const scoreElement = document.querySelector(".score-span");
 const gameAreaEl = document.getElementById("ws-area");
 const selectStory = story[0];
+
 let score = 0;
 let tempScore = 0;
+let totalWords = 0;
+let solvedWords = 0;
 let level_counter = 1;
+let current_progress = 0;
+let randomWordList = [];
 let hintUsed = false;
 let levelChanged = false;
-let interval = 0;
 console.log(keywords.length);
 
 // Bulb Icon for Hint button
@@ -18,27 +22,34 @@ const hintSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
 <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
 </svg>`;
 
-// To generate & store random words from 'keywordList.js'
-
 // Progress bar
-function updateProgressBar() {
-  if (current_progress >= 0 && current_progress <= 100) {
-    current_progress += 1 / timeLimit;
-    // console.log(current_progress);
-    progressBar.setAttribute("style", `width:${current_progress}%`);
-    progressBar.setAttribute("aria-valuenow", current_progress);
+function genProgressBar() {
+  current_progress = 0;
+  solvedWords = 0;
+  if (level.level_count === 1) {
+    totalWords = uniq(randomWordList).length;
+  } else if (level.level_count === 2) {
+    totalWords = uniq(findAllByKey(story[0], 'words')).length;
+  } else if (level.level_count === 3) {
+    totalWords = uniq(findAllByKey(keywords, 'one_liner')).length;
   } else {
-    clearInterval(interval);
-    interval = 0;
+    console.log("Progress can't be set for unknown level")
   }
+  progressBar.setAttribute("style", `width:${current_progress}%`);
+  progressBar.setAttribute("aria-valuenow", current_progress);
+  progressBar.innerText = "";
 }
 
 function progressBarFun() {
-  interval = setInterval(updateProgressBar, 10);
+  if(solvedWords <= totalWords) {
+    solvedWords++;
+    current_progress = ((solvedWords / totalWords) * 100);
+    console.log(current_progress);
+    progressBar.setAttribute("style", `width:${current_progress}%`);
+    progressBar.setAttribute("aria-valuenow", current_progress);
+    progressBar.innerText = solvedWords + "/" + totalWords + " words found";
+  }
 }
-
-let current_progress = 0;
-let timeLimit = 60;
 
 // Function to display instructions
 function instructionFun(instructionList) {
@@ -68,7 +79,6 @@ function uniq(a) {
 
 // This block runs initially when the webpage is loaded
 window.addEventListener("DOMContentLoaded", (event) => {
-  progressBarFun();
   generateWordList();
 });
 
@@ -163,7 +173,7 @@ function generateWordList() {
   puzzleInfoBlock.innerHTML = `<p class="info-title noselect px-5 mx-4 display-3 pt-3 pb-3 text-decoration-underline">${info_title}</p>`;
 
   // Inserts word list into the HTML
-  let randomWordList = [];
+  randomWordList = [];
   let wordIndex = Array.from(Array(wordList.length).keys());
   wordIndex = wordIndex.sort(() => Math.random() - 0.5);
   console.log(wordIndex);
@@ -198,10 +208,13 @@ function generateWordList() {
 
   if (level.level_count === 1) {
     gameAreaEl.wordSearch(uniq(randomWordList));
+    genProgressBar();
   } else if (level.level_count === 2) {
     gameAreaEl.wordSearch(uniq(findAllByKey(story[0], 'words')));
+    genProgressBar();
   } else if (level.level_count === 3) {
-    console.log(findAllByKey(keywords, 'one_liner'))
+    console.log(uniq(findAllByKey(keywords, 'one_liner')));
+    genProgressBar();
   } else {
     console.log('Level error')
   }
@@ -281,21 +294,14 @@ function insertOneLiner(i, puzzleInfoBlock, hintSVG, one_liner) {
 // Restarts the puzzle at current level
 restartButton.addEventListener("click", () => {
   gameAreaEl.innerHTML="";
+  genProgressBar();
   generateWordList();
   levelChanged = true;
   if (level.level_count === 1){
     tempScore = 0
   }
   scoreElement.textContent = score;
-  clearInterval(interval);
   hintUsed = false;
-  interval = 0;
-  current_progress = 0;
-  progressBar.setAttribute("style", `width:${current_progress}%`);
-  progressBar.setAttribute("aria-valuenow", current_progress);
-  setTimeout(() => {
-    progressBarFun();
-  }, 1000);
 });
 
 document.addEventListener('click',function(e) {
@@ -363,6 +369,7 @@ document.addEventListener('click',function(e) {
 
 // Score
 export function updateScore() {
+  progressBarFun();
   let incrementValue = 10;
   if (level.level_count >= 2){
     if (levelChanged) {

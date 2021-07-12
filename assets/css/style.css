@@ -30,6 +30,8 @@ body {
 .progress {
   top: var(--navbar-height);
   position: fixed;
+  height: 2.5rem;
+  font-size: 1.5rem;
 }
 
 .progress-bar {
