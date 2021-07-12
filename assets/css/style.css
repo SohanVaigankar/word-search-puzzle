@@ -181,6 +181,9 @@ body {
   text-align: start;
   word-wrap: normal;
   width: 85%;
+  font-size: 2.5rem;
+  font-weight: 350;
+  color: black;
 }
 
 .carousel-control-next {
