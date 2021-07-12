@@ -213,7 +213,7 @@ function generateWordList() {
     gameAreaEl.wordSearch(uniq(findAllByKey(story[0], 'words')));
     genProgressBar();
   } else if (level.level_count === 3) {
-    console.log(uniq(findAllByKey(keywords, 'one_liner')));
+    gameAreaEl.wordSearch(uniq(randomWordList));
     genProgressBar();
   } else {
     console.log('Level error')
@@ -392,6 +392,7 @@ export function updateScore() {
 
 // Level system
 export function changeLevel() {
+  if (level_counter < 3) {
     level_counter++;
     level.level_count = level_counter
     levelChanged = true
@@ -404,4 +405,5 @@ export function changeLevel() {
     if (document.getElementById('carousel')){
       document.querySelector(".carousel").style.setProperty("opacity",0);
     }
+  } else console.log("No more further levels are available")
 }
