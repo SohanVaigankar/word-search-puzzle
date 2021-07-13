@@ -1,5 +1,3 @@
-import { keywords, story } from "./keywordList.js";
-
 const progressBar = document.querySelector(".progress-bar");
 const restartButton = document.querySelector(".restart");
 const scoreElement = document.querySelector(".score-span");
@@ -368,7 +366,7 @@ document.addEventListener('click',function(e) {
 });
 
 // Score
-export function updateScore() {
+function updateScore() {
   progressBarFun();
   let incrementValue = 10;
   if (level.level_count >= 2){
@@ -391,7 +389,7 @@ export function updateScore() {
 }
 
 // Level system
-export function changeLevel() {
+function changeLevel() {
   if (level_counter < 3) {
     level_counter++;
     level.level_count = level_counter

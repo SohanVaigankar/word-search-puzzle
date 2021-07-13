@@ -1,5 +1,3 @@
-import { updateScore, changeLevel } from "./main.js"
-
 let wordFound = false;
 
 (function(){
