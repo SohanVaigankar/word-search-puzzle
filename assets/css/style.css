@@ -18,13 +18,45 @@ html {
 
 body {
   font-size: 1.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   background-color: var(--primary-background-color);
   color: var(--primary-text-color);
+}
+
+body::-webkit-scrollbar {
+  display:none;
 }
 
 .navbar {
   height: var(--navbar-height);
   font-size: 1.8rem;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay p {
+  padding: 8px;
+  font-size: 36px;
+  color: #818181;
 }
 
 .progress {
@@ -183,6 +215,7 @@ body {
   width: 85%;
   font-size: 2.5rem;
   font-weight: 350;
+  white-space: pre-line;
   color: black;
 }
 

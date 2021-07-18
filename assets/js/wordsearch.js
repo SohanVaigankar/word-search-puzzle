@@ -374,7 +374,8 @@ let wordFound = false;
                             "<h2>Congratulations!</h2>"+
                             "<p>You've found all of the words!</p>"+
                             "<button type='button' id='nextlevelbtn'"+
-                            "class='nextlevel margin-top btn btn-lg btn-primary col-2 p-3'>"+
+                            "class='nextlevel margin-top btn btn-lg btn-primary col-2 p-3'"+
+                            "onclick='nextLevelBtnFn()'>"+
                             "Next Level"+
                             "</button>"+
                           "</div>"+
