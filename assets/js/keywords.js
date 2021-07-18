@@ -1,62 +1,56 @@
 let keywords = [
   {
     word: "Video",
-    hint: `v _ d _ o`,
-    one_liner:
-      "A media made out of lots of photos, shown quickly, one after the other. It may contain sound",
+    hint: ``,
+    one_liner: "",
     description:
       "A video is made of lots of photos, shown quickly, one after the other. It may contain sound.",
   },
   {
     word: "Animation",
-    hint: `a _ _ m a _ i _ n`,
-    one_liner:
-      "This is a one-liner for video keyword sdjfhskhfksdf dsbnbfjksdh jhfsd jkhfsds fsjhfslkjf fslkjjf fsdklj fsfklskf fsfhsf b",
+    hint: ``,
+    one_liner: "",
     description:
       "Animations (cartoons) can be made with drawings and by coding.",
   },
   {
     word: "Robot",
-    hint: `r _ _ o t`,
-    one_liner:
-      "This is a one-liner for video keyword sdjfhskhfksdf dsbnbfjksdh jhfsd jkhfsds fsjhfslkjf fslkjjf fsdklj fsfklskf fsfhsf b",
+    hint: ``,
+    one_liner: "",
     description:
       "A robot is just a computer that can perform a series of complex tasks automatically.",
   },
   {
     word: "Game",
-    hint: `g _ _ e`,
-    one_liner:
-      "This is a one-liner for video keyword sdjfhskhfksdf dsbnbfjksdh jhfsd jkhfsds fsjhfslkjf fslkjjf fsdklj fsfklskf fsfhsf b",
+    hint: ``,
+    one_liner: "",
     description: "You can make a computer game using code.",
   },
   {
     word: "Computer",
-    hint: `c _ m _ u _ e r`,
-    one_liner:
-      "This is a one-liner for video keyword sdjfhskhfksdf dsbnbfjksdh jhfsd jkhfsds fsjhfslkjf fslkjjf fsdklj fsfklskf fsfhsf b",
+    hint: ``,
+    one_liner: "",
     description:
       "A computer is an electronic device. It doesn’t have a brain like us and it can’t think or have ideas, but it can follow stored instructions and do lots of useful things.",
   },
   {
     word: "Packet",
-    hint: `p _ c k _ t`,
+    hint: ``,
     one_liner: "",
     description:
       "When information is being sent from one computer to another it is broken down into small bits of data called 'packets'.",
   },
   {
     word: "Switch",
-    hint: `s _ i t _ h`,
+    hint: ``,
     one_liner: "",
     description:
       "A smart device that connects together many different devices so they can act as a network.",
   },
   {
     word: "Router",
-    hint: `r _ u _ e r`,
-    one_liner:
-      "dsffesrdfg dfsdf sddfsaf sd dfsdafsaThis is a one-liner for video keyword sdjfhskhfksdf dsbnbfjksdh jhfsd jkhfsds fsjhfslkjf fslkjjf fsdklj fsfklskf fsfhsf b",
+    hint: ``,
+    one_liner: "",
     description:
       "A smart device that directs or routes information around the internet.",
   },
@@ -260,8 +254,7 @@ let keywords = [
   {
     word: "Decomposition",
     hint: ``,
-    one_liner:
-      "Breaking down a problem into smaller parts to make it easier to solve",
+    one_liner: "",
     description:
       "Decomposition is when we break a problem down into smaller parts to make it easier to tackle.",
   },
@@ -359,7 +352,72 @@ let keywords = [
     description:
       "Solving a bigger problem by dividing it into smaller problems in a defined way until the problem is solved",
   },
-
+  {
+    word: `Anger`,
+    hint: ``,
+    one_liner: `I am that feeling that can get your voice louder as I increase.`,
+    description: ``,
+  },
+  {
+    word: `Confident`,
+    hint: ``,
+    one_liner: `You feel this feeling when you are sure of what you would like.`,
+    description: ``,
+  },
+  {
+    word: `Humiliated`,
+    hint: ``,
+    one_liner: `I am that feeling which occurs when someone makes fun of you.`,
+    description: ``,
+  },
+  {
+    word: `Confused`,
+    hint: ``,
+    one_liner: `I am your feeling who is not sure of being expressed.`,
+    description: ``,
+  },
+  {
+    word: `Guilty`,
+    hint: ``,
+    one_liner: `I am that feeling which you feel when you are doing some kind of mistake.`,
+    description: ``,
+  },
+  {
+    word: `Scared`,
+    hint: ``,
+    one_liner: `I am an emotion which you feel when you are in a dark room.`,
+    description: ``,
+  },
+  {
+    word: `Irritated`,
+    hint: ``,
+    one_liner: `What are you feeling if your facial expression is :/`,
+    description: ``,
+  },
+  {
+    word: `Sad`,
+    hint: ``,
+    one_liner: `When you feel me your eyes are watery.`,
+    description: ``,
+  },
+  {
+    word: `Excited`,
+    hint: ``,
+    one_liner: `Which feeling am I when your heart is racing?`,
+    description: ``,
+  },
+  {
+    word: `Fear`,
+    hint: ``,
+    one_liner: `What am I when you feel all sweaty?`,
+    description: ``,
+  },
+  {
+    word: `Surprise`,
+    hint: ``,
+    one_liner: `Name me, I am the one who makes you feel. When someone does something for you without your knowledge.`,
+    description: ``,
+  },
   {
     word: `Alone`,
     hint: ``,
@@ -674,12 +732,6 @@ let keywords = [
   },
   {
     word: `Shocked`,
-    hint: ``,
-    one_liner: ``,
-    description: ``,
-  },
-  {
-    word: `Surprised`,
     hint: ``,
     one_liner: ``,
     description: ``,
