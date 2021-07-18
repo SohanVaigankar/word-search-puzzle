@@ -19,7 +19,7 @@ const hintSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
 <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
 </svg>`;
 
-
+// Show overlay for mobile devices
 if (window.innerWidth < 1366) {
   var overlayContent = '<div id="overlayBlock" class="overlay">' +
   '<div class="overlay-content">' +
@@ -54,6 +54,7 @@ function genProgressBar() {
   progressBar.innerText = "";
 }
 
+// Update progress after the word is found
 function progressBarFun() {
   if(solvedWords <= totalWords) {
     solvedWords++;
@@ -77,6 +78,7 @@ function instructionFun(instructionList) {
   });
 }
 
+// Find key values of any object 
 function findAllByKey(obj, keyToFind) {
   return Object.entries(obj)
     .reduce((acc, [key, value]) => (key === keyToFind)
@@ -87,6 +89,7 @@ function findAllByKey(obj, keyToFind) {
     , [])
 }
 
+// Return unique keywords in case of repetition
 function uniq(a) {
   return Array.from(new Set(a));
 }
@@ -96,8 +99,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
   generateWordList();
 });
 
+// Set game level
 var level = { level_count: 1, no_of_words: levelWords };
-
 let level_counter = level.level_count;
 
 document.querySelector(
@@ -141,10 +144,10 @@ function generateWordList() {
       info_title = "Word List";
       levelClasses = " col-5";
       instructionList = [
-        "Instruction 1",
-        "Instruction 2",
-        "Instruction 3",
-        "Instruction 4",
+        "Find all the words in word list to complete this level",
+        "Each word found adds 10 points to the total score",
+        "If you click restart, you'll lose the score",
+        "Once the word is found, it will strike the word found"
       ];
       break;
     case 2:
@@ -152,21 +155,21 @@ function generateWordList() {
       info_title = selectStory.title;
       levelClasses = " col margin-left";
       instructionList = [
-        "Instruction 1",
-        "Instruction 2",
-        "Instruction 3",
-        "Instruction 4",
+        "The words are hidden in the story, try to identify them",
+        "You cannot click hint on first part of the story, first go through parts of the story",
+        "If you use hints, you will get 5 points else 10 points as usual",
+        "Words can be repeated, you need to find them only once in the grid"
       ];
       break;
     case 3:
       // For level 3: hard
-      info_title = "One Liners";
+      info_title = "Riddles";
       levelClasses = " col margin-left";
       instructionList = [
-        "Instruction 1",
-        "Instruction 2",
-        "Instruction 3",
-        "Instruction 4",
+        "This is the last level of the game",
+        "You have to read the riddles and find the word for each riddle",
+        "If you use hints, you will get 5 points else 10 points as usual",
+        "To close the hint, click close or anywhere outside the hint box"
       ];
       break;
     default:
@@ -222,6 +225,7 @@ function generateWordList() {
   //console.log("WordList:" + wordList);
   //console.log("Random Word List:" + randomWordList);
 
+  // Grid creation
   if (level.level_count === 1) {
     gameAreaEl.wordSearch(uniq(randomWordList));
     genProgressBar();
@@ -296,6 +300,7 @@ function generateWordList() {
   instructionFun(instructionList);
 }
 
+// Handle one-liners and add them to the page
 function insertOneLiner(i, puzzleInfoBlock, hintSVG, one_liner) {
   puzzleInfoBlock.innerHTML += `<div class="oneliner row noselect p-1 px-5 mx-4">
   <p class=" p-2 col-1 text-start">${i + 1 + ` . `}</p>
@@ -307,7 +312,7 @@ function insertOneLiner(i, puzzleInfoBlock, hintSVG, one_liner) {
   </div>`;
 }
 
-//Handle hints for one-liners
+// Handle hints for one-liners
 function oneLinerHintOnclick(btn) {
   var olHintIndex = btn.id.match(/(\d+)/)[0];
   var olHint = randomWordList[olHintIndex];
@@ -331,20 +336,23 @@ function oneLinerHintOnclick(btn) {
 
   setOneLinerHintModalContent(html);
 
-  // Show the modal.
+  // Show the modal
   var olHintModal = new bootstrap.Modal(oneLinerHintModal)
   olHintModal.show();
   hintUsed = true;
 }
 
+// Select the modal by id
 function getOneLinerHintModal() {
   return document.getElementById('exampleModal');
 }
 
+// Sets the hint content for each one-liner
 function setOneLinerHintModalContent(html) {
   getOneLinerHintModal().querySelector('.modal-content').innerHTML = html;
 }
 
+// Initialise modal
 function initOneLinerHintModal() {
   var modal = document.createElement('div');
   modal.classList.add('modal', 'fade');
@@ -373,6 +381,7 @@ restartButton.addEventListener("click", () => {
   hintUsed = false;
 });
 
+// Handle story hints
 function storyHintFn(sidx) {
     let temp = [];
     let hintWords = [];
@@ -380,6 +389,7 @@ function storyHintFn(sidx) {
     let showHint = ""
     let hidx = 0;
 
+    // Get all words to be searched and highlight them
     hidx = sidx.id.match(/(\d+)/)[0];
     //console.log(hidx)
     hintWords.push(selectStory.part[hidx].words);
@@ -392,6 +402,7 @@ function storyHintFn(sidx) {
     }
     temp.push(showHint);
     
+    // Highlight words only for current slide, rest will remain unaffected
     for (let i = 0; i < selectStory.part.length; i++) {
       if (i == hidx) {
         tempUpdate.push(`
@@ -425,7 +436,7 @@ function storyHintFn(sidx) {
     showHint = "";
 };
 
-
+// Next level button to remove the overlay once level is completed
 function nextLevelBtnFn() {
     if (document.getElementById('carousel')) {
       document.querySelector(".carousel").style.setProperty("opacity",100);
@@ -434,7 +445,7 @@ function nextLevelBtnFn() {
 };
 
 
-// Score
+// Handle score according to hint used and store previous level scores
 function updateScore() {
   progressBarFun();
   let incrementValue = 10;

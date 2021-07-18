@@ -2,7 +2,7 @@
   --primary-background-color: #fafafa;
   --secondary-background-color: #f5f5f5;
   --primary-text-color: #252525;
-  --navbar-height: 6rem;
+  --navbar-height: 8rem;
 }
 
 * {
@@ -26,6 +26,11 @@ body {
 
 body::-webkit-scrollbar {
   display:none;
+}
+
+.logo {
+	width: 150px;
+	height: 75px;
 }
 
 .navbar {
